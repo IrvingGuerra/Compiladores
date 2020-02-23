@@ -16,14 +16,43 @@ list :
      }   
      ;
 inst:  NUMBER  { ((Algo)$$.obj).inst=maq.code("constpush");
-                maq.code(((Algo)$1.obj).simb); }
-      | RECTANGULO   { maq.code("rectangulo"); }
-      | LINE NUMBER  { maq.code("constpush");
-                maq.code(((Algo)$2.obj).simb); maq.code("line");}
-      | CIRCULO NUMBER  { maq.code("constpush");
-                maq.code(((Algo)$2.obj).simb); maq.code("circulo");}
+                maq.code(((Algo)$1.obj).simb); 
+               }
+      | RECTANGULO NUMBER NUMBER NUMBER NUMBER { 
+                  maq.code("constpush"); 
+                  maq.code(((Algo)$2.obj).simb);
+                  maq.code("constpush"); 
+                  maq.code(((Algo)$3.obj).simb);
+                  maq.code("constpush"); 
+                  maq.code(((Algo)$4.obj).simb);
+                  maq.code("constpush"); 
+                  maq.code(((Algo)$5.obj).simb);
+                  maq.code("rectangulo");
+               }
+      | LINE NUMBER NUMBER NUMBER NUMBER { 
+                  maq.code("constpush");
+                  maq.code(((Algo)$2.obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)$3.obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)$4.obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)$5.obj).simb); 
+                  maq.code("line");
+               }
+      | CIRCULO NUMBER NUMBER NUMBER { 
+                  maq.code("constpush");
+                  maq.code(((Algo)$2.obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)$3.obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)$4.obj).simb); 
+                  maq.code("circulo");
+               }
       | COLOR NUMBER { maq.code("constpush");
-                maq.code(((Algo)$2.obj).simb); maq.code("color");}
+                maq.code(((Algo)$2.obj).simb); 
+                maq.code("color");
+               }
       ;
 %%
 class Algo {

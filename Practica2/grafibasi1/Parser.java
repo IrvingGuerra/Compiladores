@@ -173,22 +173,25 @@ final static short yylhs[] = {                           -1,
     0,    0,    0,    1,    1,    1,    1,    1,
 };
 final static short yylen[] = {                            2,
-    0,    2,    3,    1,    1,    2,    2,    2,
+    0,    2,    3,    1,    5,    5,    4,    2,
 };
 final static short yydefred[] = {                         1,
-    0,    4,    0,    0,    5,    0,    2,    0,    6,    7,
-    8,    3,
+    0,    4,    0,    0,    0,    0,    2,    0,    0,    0,
+    0,    8,    3,    0,    0,    0,    0,    7,    0,    6,
+    5,
 };
 final static short yydgoto[] = {                          1,
     8,
 };
 final static short yysindex[] = {                         0,
-  -59,    0, -256, -255,    0, -254,    0,  -55,    0,    0,
-    0,    0,
+  -59,    0, -256, -255, -254, -253,    0,  -54, -251, -250,
+ -249,    0,    0, -248, -247, -246, -245,    0, -244,    0,
+    0,
 };
 final static short yyrindex[] = {                         0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,
 };
 final static short yygindex[] = {                         0,
     0,
@@ -198,8 +201,8 @@ static short yytable[];
 static { yytable();}
 static void yytable(){
 yytable = new short[]{                          7,
-    9,   10,   11,   12,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    9,   10,   11,   12,   13,   14,   15,   16,   17,   18,
+   19,   20,   21,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -225,8 +228,8 @@ static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
 yycheck = new short[] {                         59,
-  257,  257,  257,   59,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
+  257,  257,  257,  257,   59,  257,  257,  257,  257,  257,
+  257,  257,  257,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
@@ -275,13 +278,13 @@ final static String yyrule[] = {
 "list : list ';'",
 "list : list inst ';'",
 "inst : NUMBER",
-"inst : RECTANGULO",
-"inst : LINE NUMBER",
-"inst : CIRCULO NUMBER",
+"inst : RECTANGULO NUMBER NUMBER NUMBER NUMBER",
+"inst : LINE NUMBER NUMBER NUMBER NUMBER",
+"inst : CIRCULO NUMBER NUMBER NUMBER",
 "inst : COLOR NUMBER",
 };
 
-//#line 28 "forma.y"
+//#line 57 "forma.y"
 
 class Algo {
 	Simbolo simb;
@@ -360,7 +363,7 @@ Parser(int foo){
    jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
 }
 public static void main(String args[]){ new Parser(); }
-//#line 292 "Parser.java"
+//#line 295 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -519,32 +522,60 @@ case 3:
 { 
              maq.code("print"); maq.code("STOP"); return 1 ;
      }
-//break;
 case 4:
 //#line 18 "forma.y"
 { ((Algo)yyval.obj).inst=maq.code("constpush");
-                maq.code(((Algo)val_peek(0).obj).simb); }
+                maq.code(((Algo)val_peek(0).obj).simb); 
+               }
 break;
 case 5:
-//#line 20 "forma.y"
-{ maq.code("rectangulo"); }
+//#line 21 "forma.y"
+{ 
+                  maq.code("constpush"); 
+                  maq.code(((Algo)val_peek(3).obj).simb);
+                  maq.code("constpush"); 
+                  maq.code(((Algo)val_peek(2).obj).simb);
+                  maq.code("constpush"); 
+                  maq.code(((Algo)val_peek(1).obj).simb);
+                  maq.code("constpush"); 
+                  maq.code(((Algo)val_peek(0).obj).simb);
+                  maq.code("rectangulo");
+               }
 break;
 case 6:
-//#line 21 "forma.y"
-{ maq.code("constpush");
-                maq.code(((Algo)val_peek(0).obj).simb); maq.code("line");}
+//#line 32 "forma.y"
+{ 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(3).obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(2).obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(1).obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(0).obj).simb); 
+                  maq.code("line");
+               }
 break;
 case 7:
-//#line 23 "forma.y"
-{ maq.code("constpush");
-                maq.code(((Algo)val_peek(0).obj).simb); maq.code("circulo");}
+//#line 43 "forma.y"
+{ 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(2).obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(1).obj).simb); 
+                  maq.code("constpush");
+                  maq.code(((Algo)val_peek(0).obj).simb); 
+                  maq.code("circulo");
+               }
 break;
 case 8:
-//#line 25 "forma.y"
+//#line 52 "forma.y"
 { maq.code("constpush");
-                maq.code(((Algo)val_peek(0).obj).simb); maq.code("color");}
+                maq.code(((Algo)val_peek(0).obj).simb); 
+                maq.code("color");
+               }
 break;
-//#line 471 "Parser.java"
+//#line 503 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
