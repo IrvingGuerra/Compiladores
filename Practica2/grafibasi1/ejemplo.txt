@@ -1,7 +1,63 @@
+CASA
+
+rectangulo 50 50 80 80 ;
+line 40 60 90 10 ;
+line 90 10 140 60 ;
+
+rectangulo 80 90 20 40 ;
+circulo 8 90 110 ;
+
+rectangulo 60 70 15 15 ;
+line 60 70 75 85 ;
+line 60 85 75 70 ;
+
+rectangulo 60 70 15 15 ;
+line 60 70 75 85 ;
+line 60 85 75 70 ;
+
+rectangulo 105 70 15 15 ;
+line 105 70 120 85 ;
+line 105 85 120 70 ;
 
 
-color 0 ; circulo 100 ;
-color 1 ; line 100 ;
-color 2 ; rectangulo ;
+PERSONA
 
+circulo 18 180 60 ;
+line 190 78 190 100 ;
+line 190 100 180 130 ;
+line 190 100 200 130 ;
+line 190 80 175 100 ;
+line 190 80 205 90 ;
+line 205 90 210 70 ;
+
+
+CARRO 
+
+circulo 20 300 110 ;
+circulo 10 305 115 ;
+circulo 20 400 110 ;
+circulo 10 405 115 ;
+line 320 120 400 120 ;
+line 280 120 300 120 ;
+line 270 110 280 120 ;
+line 270 110 280 100 ;
+line 270 110 280 110 ;
+line 280 110 290 100 ;
+line 290 100 280 100 ;
+line 280 100 300 95 ;
+line 300 95 320 95 ;
+line 320 95 335 85 ;
+line 335 85 355 77 ;
+line 355 77 400 77 ;
+line 400 77 435 95 ;
+line 435 95 440 105 ;
+line 440 105 440 115 ;
+line 420 118 440 115 ;
+
+line 335 95 415 95 ;
+line 335 95 355 85 ;
+line 355 85 355 95 ;
+line 355 85 395 85 ;
+line 395 85 415 95 ;
+line 395 85 395 95 ;
 
