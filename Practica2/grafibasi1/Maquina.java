@@ -79,20 +79,34 @@ Class parames[];
 		}
         }
 		void line(){
-			double d1=0,d2=0,d3=0,d4=0; d4=((Double)pila.pop()).doubleValue(); d3=((Double)pila.pop()).doubleValue(); d2=((Double)pila.pop()).doubleValue(); d1=((Double)pila.pop()).doubleValue();
+			double d1=0,d2=0,d3=0,d4=0; 
+			d4=((Double)pila.pop()).doubleValue(); 
+			d3=((Double)pila.pop()).doubleValue(); 
+			d2=((Double)pila.pop()).doubleValue(); 
+			d1=((Double)pila.pop()).doubleValue();
 			if(g!=null){
-			(new Linea((int)d1,(int)d2,(int)(d3),(int)(d4))).dibuja(g);
-			} }
-			void circulo(){
-			double d1=0,d2=0,d3=0; d3=((Double)pila.pop()).doubleValue(); d2=((Double)pila.pop()).doubleValue(); d1=((Double)pila.pop()).doubleValue();
+				(new Linea((int)d1,(int)d2,(int)(d3),(int)(d4))).dibuja(g);
+			} 
+		}
+		void circulo(){
+			double d1=0,d2=0,d3=0; 
+			d3=((Double)pila.pop()).doubleValue(); 
+			d2=((Double)pila.pop()).doubleValue(); 
+			d1=((Double)pila.pop()).doubleValue();
 			if(g!=null){
-			(new Circulo((int)d2, (int)d3, (int)d1)).dibuja(g);
-			} }
-			void rectangulo(){
-			double d1=0,d2=0,d3=0,d4=0; d4=((Double)pila.pop()).doubleValue(); d3=((Double)pila.pop()).doubleValue(); d2=((Double)pila.pop()).doubleValue(); d1=((Double)pila.pop()).doubleValue();
+				(new Circulo((int)d2, (int)d3, (int)d1)).dibuja(g);
+			} 
+		}
+		void rectangulo(){
+			double d1=0,d2=0,d3=0,d4=0; 
+			d4=((Double)pila.pop()).doubleValue(); 
+			d3=((Double)pila.pop()).doubleValue(); 
+			d2=((Double)pila.pop()).doubleValue(); 
+			d1=((Double)pila.pop()).doubleValue();
 			if(g!=null){
-			(new Rectangulo((int)d1, ((int)d2), (int)d3, ((int)d4) )).dibuja(g);
-			} }
+				(new Rectangulo((int)d1, ((int)d2), (int)d3, ((int)d4) )).dibuja(g);
+			} 
+		}
 	void print(){
 	Double d;
 	d=(Double)pila.pop();
