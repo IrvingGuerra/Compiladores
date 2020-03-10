@@ -97,14 +97,14 @@ exp:  CNUMBER         {Complejo c = (Complejo) $1.obj;}
     return res;
   }
   public Complejo multiplicaComplejos(Complejo c1, Complejo c2) {
-    Complejo res = new Complejo(c1.getReal()*c2.getReal() - c1.getImg()*c2.getImg(),
-                        c1.getImg()*c2.getReal() + c1.getReal()*c2.getImg());
-    return res;
+    Complejo res = new Complejo((c1.getReal() * c2.getReal()) - (c1.getImg() * c2.getImg()),
+                                  (c1.getImg() * c2.getReal()) + (c1.getReal() * c2.getImg()) );
+    return res; 
   }
   public Complejo divideComplejos(Complejo c1, Complejo c2) {
-    double d = c2.getReal()*c2.getReal() + c2.getImg()*c2.getImg();
-    Complejo res = new Complejo(c1.getReal()*c2.getReal() + c1.getImg()*c2.getImg() / d,
-                        c1.getImg()*c2.getReal() - c1.getReal()*c2.getImg() / d);
+    float d = (float) ( (c2.getReal() * c2.getReal()) + (c2.getImg() * c2.getImg()) );
+    Complejo res = new Complejo((float) (c1.getReal() * c2.getReal() + c1.getImg() * c2.getImg()) / d,
+                              (float) (c1.getImg() * c2.getReal() - c1.getReal() * c2.getImg()) / d );
     return res;
   }
 
@@ -136,10 +136,7 @@ void update(Symbol s, Complejo data) {
 }
 
 void imprimeComplejo(Complejo c) {
-  if(c.getImg() != 0)
-      System.out.println(c.getReal()+","+c.getImg());
-   else
-      System.out.println(c.getReal());
+  System.out.println(c.getReal()+","+c.getImg()+"i");
 }
 
 

@@ -584,8 +584,7 @@ class Yylex {
             // fall through
           case 9: break;
           case 4: 
-            { System.out.println("Vi una variable:");
-  yyparser.yylval = new ParserVal(new Cadena(yytext()));
+            { yyparser.yylval = new ParserVal(new Cadena(yytext()));
   return Parser.VAR;
             } 
             // fall through

@@ -330,14 +330,14 @@ final static String yyrule[] = {
     return res;
   }
   public Complejo multiplicaComplejos(Complejo c1, Complejo c2) {
-    Complejo res = new Complejo(c1.getReal()*c2.getReal() - c1.getImg()*c2.getImg(),
-                        c1.getImg()*c2.getReal() + c1.getReal()*c2.getImg());
-    return res;
+    Complejo res = new Complejo((c1.getReal() * c2.getReal()) - (c1.getImg() * c2.getImg()),
+                                  (c1.getImg() * c2.getReal()) + (c1.getReal() * c2.getImg()) );
+    return res; 
   }
   public Complejo divideComplejos(Complejo c1, Complejo c2) {
-    double d = c2.getReal()*c2.getReal() + c2.getImg()*c2.getImg();
-    Complejo res = new Complejo(c1.getReal()*c2.getReal() + c1.getImg()*c2.getImg() / d,
-                        c1.getImg()*c2.getReal() - c1.getReal()*c2.getImg() / d);
+    float d = (float) ( (c2.getReal() * c2.getReal()) + (c2.getImg() * c2.getImg()) );
+    Complejo res = new Complejo((float) (c1.getReal() * c2.getReal() + c1.getImg() * c2.getImg()) / d,
+                              (float) (c1.getImg() * c2.getReal() - c1.getReal() * c2.getImg()) / d );
     return res;
   }
 
@@ -369,10 +369,7 @@ void update(Symbol s, Complejo data) {
 }
 
 void imprimeComplejo(Complejo c) {
-  if(c.getImg() != 0)
-      System.out.println(c.getReal()+","+c.getImg());
-   else
-      System.out.println(c.getReal());
+  System.out.println(c.getReal()+","+c.getImg()+"i");
 }
 
 
@@ -389,7 +386,7 @@ public static void main(String args[]) throws IOException {
     yyparser.yyparse();
 
   }
-//#line 321 "Parser.java"
+//#line 318 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -614,7 +611,7 @@ case 13:
 //#line 59 "complejos.y"
 {Complejo c = (Complejo) val_peek(1).obj; yyval = new ParserVal(c); }
 break;
-//#line 541 "Parser.java"
+//#line 538 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
