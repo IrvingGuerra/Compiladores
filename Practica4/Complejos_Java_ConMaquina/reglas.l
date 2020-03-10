@@ -18,7 +18,7 @@ digits      = [0-9]
 number      = (0|[1-9]+{digits}*)\.?{digits}*
 im          = [i]
 complexnum  = {ws}*[-]*{ws}*{number}{ws}*[+|-]{ws}*{number}{ws}*{im}{ws}*
-var         = [a-zA-Z][a-zA-Z]*
+var         = [a-zA-Z][a-zA-Z]* | [a-zA-Z][a-zA-Z]*{digits}
 built       = sin | exp | cos
 
 

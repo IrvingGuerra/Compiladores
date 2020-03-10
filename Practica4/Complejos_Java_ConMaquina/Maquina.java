@@ -1,110 +1,106 @@
-import java.awt.*;
 import java.util.*;
 import java.lang.reflect.*;
 
 public class Maquina {
-  Stack       pila;  
-  Vector      prog;
-  int         pc;
-  Method      metodo;
-  Class       c;
-  SymbolTable symbolTable;
+  Stack<Object>       pila;  
+  Vector<Object>      prog;
+  int                 pc;
+  Method              metodo;
+  Class<?>            c;
+  SymbolTable         symbolTable;
 
   
-  void init() { 
-  /* Function init */
-    String[] callNames = {"exp", "sin", "cos"};
-    String[] funcNames = {"exp", "sinus", "cosine"};
-    for (int i = 0; i < funcNames.length; i++) {
-      symbolTable.install(callNames[i], funcNames[i], null, (short) 2);  
-    }
+void init() { 
+  String[] callNames = {"exp", "sin", "cos"};
+  String[] funcNames = {"exp", "sinus", "cosine"};
+  for (int i = 0; i < funcNames.length; i++) {
+    symbolTable.install(callNames[i], funcNames[i], null, (short) 2);  
   }
+}
   
-  void initCode() {
-      pila        = new Stack();      
-      prog        = new Vector();
-      symbolTable = new SymbolTable();
-      init();
-   }
-  
-  int code(Object f) {      
-      prog.addElement(f);     // We add f in the program.
-      return prog.size() - 1; // Return of the 'line of program'.
-   }
-  
-  Object pop() { 
-    return pila.pop();
-  }
-  
-  void cNumber() {
-	  Complejo c = (Complejo) prog.elementAt(pc);
-	  pc = pc + 1;                                 // Extra increment in pc.
-	  pila.push(c);                                // A Complejo is pushed in the stack.
-  }
-  
-  void varPush() {
-    Cadena c = (Cadena) prog.elementAt(pc);
-    pc = pc + 1;                                // Extra increment in pc.
-    pila.push(c);                               // A variable is pushed in the stack
-  }
-  
-  void asgVar() {
-    Cadena sy   = (Cadena)    pila.pop();       // Get data from stack (symbol).         
-    Complejo c  = (Complejo)  pila.pop();       // Get data from stack (data).
-    
-    Symbol s = symbolTable.lookUpTable(sy.getCadena());                      
-    if (s == null) 
-      symbolTable.install(sy.getCadena(), null, c, (short) 1);
-    else
-      symbolTable.update(s, c);
-  }
-  
-  void getVarValue() {
-    Cadena sym  = (Cadena) pila.pop();          // Get data from stack (symbol).
-    Symbol s    = symbolTable.lookUpTable(sym.getCadena());
-    
-    if (s == null) 
-      System.err.println("Undefined variable");
-    else 
-      pila.push(s.getData());
-  }
-  
-  void bltinPush() {
-    Cadena c = (Cadena) prog.elementAt(pc);
-    pc = pc + 1;                              // Extra increment in pc.
-    pila.push(c);                             // A bltin function is pushed in the stack.
-  }
-  
-  void bltin() {
-    /* Symbol recovery from the stack */
-    Cadena sym  = (Cadena) pila.pop();
-    Symbol s    = symbolTable.lookUpTable(sym.getCadena());
-    
-    /* Data recovery from the stack */
-    Complejo c  = (Complejo)  pila.pop();
+void initCode() {
+    pila        = new Stack<Object>();      
+    prog        = new Vector<Object>();
+    symbolTable = new SymbolTable();
+    init();
+}
 
-    /* Invocation of the method */
-    String fName    = s.getFunctionName();                                    
-    Complejo res    = new Complejo(0, 0);
-    Functions f     = new Functions(); 
-    Class cl        = f.getClass();
-    Class[] cArg    = new Class[1];
-    cArg[0]         = res.getClass();    
-    Object param[]  = new Object[1];
+int code(Object f) {    //f puede ser una String o un Complejo, o cualquier Objeto   
+  prog.addElement(f);     // We add f in the program.
+  return prog.size() - 1; // Return of the 'line of program'.
+}
 
-    /* Obtaining the method */
-    try {
-      Method method   = cl.getMethod(fName, cArg);      
-      param[0]        = c;
-      res             = (Complejo) method.invoke(f, param);
-    } catch (NoSuchMethodException ex) {
-    } catch (IllegalAccessException ex) {   
-    } catch (InvocationTargetException ex) {
-    }
-    
-    /* Result push in the stack */
-    pila.push(res);
+Object pop() { 
+  return pila.pop();
+}
+
+void cNumber() {
+  Complejo c = (Complejo) prog.elementAt(pc);
+  pc = pc + 1;                                 // Extra increment in pc.
+  pila.push(c);                                // A Complejo is pushed in the stack.
+}
+  
+void varPush() {
+  Cadena c = (Cadena) prog.elementAt(pc);
+  pc = pc + 1;                                // Extra increment in pc.
+  pila.push(c);                               // A variable is pushed in the stack
+}
+
+void asgVar() {
+  Cadena sy   = (Cadena)    pila.pop();       // Get data from stack (symbol).         
+  Complejo c  = (Complejo)  pila.pop();       // Get data from stack (data).
+  Symbol s = symbolTable.lookUpTable(sy.getCadena());                      
+  if (s == null) 
+    symbolTable.install(sy.getCadena(), null, c, (short) 1);
+  else
+    symbolTable.update(s, c);
+}
+
+void getVarValue() {
+  Cadena sym  = (Cadena) pila.pop();          // Get data from stack (symbol).
+  Symbol s    = symbolTable.lookUpTable(sym.getCadena());
+  if (s == null) 
+    System.err.println("Undefined variable");
+  else 
+    pila.push(s.getData());
+}
+
+void bltinPush() {
+  Cadena c = (Cadena) prog.elementAt(pc);
+  pc = pc + 1;                              // Extra increment in pc.
+  pila.push(c);                             // A bltin function is pushed in the stack.
+}
+  
+void bltin() {
+  /* Symbol recovery from the stack */
+  Cadena sym  = (Cadena) pila.pop();
+  Symbol s    = symbolTable.lookUpTable(sym.getCadena());
+  
+  /* Data recovery from the stack */
+  Complejo c  = (Complejo)  pila.pop();
+
+  /* Invocation of the method */
+  String fName    = s.getFunctionName();                                    
+  Complejo res    = new Complejo(0, 0);
+  Functions f     = new Functions(); 
+  Class cl        = f.getClass();
+  Class[] cArg    = new Class[1];
+  cArg[0]         = res.getClass();    
+  Object param[]  = new Object[1];
+
+  /* Obtaining the method */
+  try {
+    Method method   = cl.getMethod(fName, cArg);      
+    param[0]        = c;
+    res             = (Complejo) method.invoke(f, param);
+  } catch (NoSuchMethodException ex) {
+  } catch (IllegalAccessException ex) {   
+  } catch (InvocationTargetException ex) {
   }
+  
+  /* Result push in the stack */
+  pila.push(res);
+}
   
   void printVar() {
     symbolTable.print();

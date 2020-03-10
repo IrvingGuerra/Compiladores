@@ -23,7 +23,7 @@ public class SymbolTable {
     newSymbol.setData(data);
     symbols.add(newSymbol);    
   }
-  
+
   void print() {
     for (Symbol s: symbols) {
       System.out.println("Name: " + s.getSymbolName());

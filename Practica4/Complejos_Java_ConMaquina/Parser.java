@@ -293,52 +293,48 @@ final static String yyrule[] = {
 "exp : '(' exp ')'",
 };
 
-//#line 57 "complejos.y"
+//#line 60 "complejos.y"
 
-/** CÓDIGO DE SOPORTE **/
-  static Maquina maq = new Maquina();
-  private Yylex lexer;
+static Maquina maq = new Maquina();
+private Yylex lexer;
 
-  private int yylex () {
-    int yyl_return = -1;
-    try {
-      yylval = new ParserVal(0);      
-      yyl_return = lexer.yylex();
-    }
-    catch (IOException e) {
-      System.err.println("IO error :"+e);
-    }  
-
-    return yyl_return;
+private int yylex () {
+  int yyl_return = -1;
+  try {
+    yylval = new ParserVal(0);      
+    yyl_return = lexer.yylex();
   }
+  catch (IOException e) {
+    System.err.println("IO error :"+e);
+  }  
+  return yyl_return;
+}
 
+public void yyerror (String error) {
+  System.err.println ("Error: " + error);
+}
 
-  public void yyerror (String error) {
-    System.err.println ("Error: " + error);
-  }
-
-
-  public Parser(Reader r) {
-    lexer = new Yylex(r, this);
-  }
+public Parser(Reader r) {
+  lexer = new Yylex(r, this);
+}
   
-  boolean flag = false;
+boolean flag = false;
   
-  public static void main(String args[]) throws IOException {    
-    System.out.println(".:: Complex Number Calculator ::.");
+public static void main(String args[]) throws IOException {    
+  System.out.println("-Calculadora de numero Complejos con Maquina Virtual-");
 
-    Parser yyparser;
-    
-    System.out.println("Expression:");
-    
-	  yyparser = new Parser(new InputStreamReader(System.in));    
+  Parser yyparser;
+  
+  System.out.println("Ingresa las expresiones:");
+  
+  yyparser = new Parser(new InputStreamReader(System.in));    
 
-    maq.initCode();
+  maq.initCode();
 
-    yyparser.yyparse();
+  yyparser.yyparse();
 
-  }
-//#line 270 "Parser.java"
+}
+//#line 266 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -494,18 +490,21 @@ boolean doaction;
 //########## USER-SUPPLIED ACTIONS ##########
 case 3:
 //#line 18 "complejos.y"
-{ /*maq.code("printVar"); */maq.code("STOP"); 
-                          maq.execute(flag); flag = true; 
+{ maq.code("STOP"); 
+                          maq.execute(flag); 
+                          flag = true; 
                         }
 break;
 case 4:
-//#line 21 "complejos.y"
-{  maq.code("printComplex"); maq.code("STOP"); 
-                            maq.execute(flag); flag = true;
+//#line 22 "complejos.y"
+{ maq.code("printComplex"); 
+                          maq.code("STOP"); 
+                          maq.execute(flag); 
+                          flag = true;
                         }
 break;
 case 5:
-//#line 25 "complejos.y"
+//#line 28 "complejos.y"
 {  Cadena c = (Cadena)val_peek(2).obj;
                       maq.code("varPush");
                       maq.code(c);
@@ -513,14 +512,14 @@ case 5:
                     }
 break;
 case 6:
-//#line 31 "complejos.y"
+//#line 34 "complejos.y"
 { Complejo c = (Complejo) val_peek(0).obj; 
                                     maq.code("cNumber");
                                     maq.code(c);
                                   }
 break;
 case 7:
-//#line 35 "complejos.y"
+//#line 38 "complejos.y"
 { Cadena c = (Cadena)val_peek(0).obj;
                                     maq.code("varPush");
                                     maq.code(c);
@@ -528,7 +527,7 @@ case 7:
                                   }
 break;
 case 9:
-//#line 41 "complejos.y"
+//#line 44 "complejos.y"
 { Cadena c = (Cadena)val_peek(3).obj;
                                     maq.code("bltinPush");
                                     maq.code(c);
@@ -536,33 +535,33 @@ case 9:
                                   }
 break;
 case 10:
-//#line 46 "complejos.y"
+//#line 49 "complejos.y"
 { maq.code("add"); }
 break;
 case 11:
-//#line 47 "complejos.y"
+//#line 50 "complejos.y"
 { maq.code("sub"); }
 break;
 case 12:
-//#line 48 "complejos.y"
+//#line 51 "complejos.y"
 { maq.code("mult"); }
 break;
 case 13:
-//#line 49 "complejos.y"
+//#line 52 "complejos.y"
 { maq.code("div"); }
 break;
 case 14:
-//#line 50 "complejos.y"
+//#line 53 "complejos.y"
 { maq.code("powN");
                                     maq.code((Cadena) val_peek(0).obj);
                                     maq.code("pow");                                    
                                   }
 break;
 case 15:
-//#line 54 "complejos.y"
+//#line 57 "complejos.y"
 { Complejo c = (Complejo) val_peek(1).obj; yyval = new ParserVal(c); }
 break;
-//#line 489 "Parser.java"
+//#line 488 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
