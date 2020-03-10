@@ -22,8 +22,9 @@ list:	/* nada */
                             maq.execute(flag); flag = true;
                         }
 			;
-asgn: VAR '=' exp   { maq.code("varPush");
-                      maq.code((Cadena) $1.obj);
+asgn: VAR '=' exp   {  Cadena c = (Cadena)$1.obj;
+                      maq.code("varPush");
+                      maq.code(c);
                       maq.code("asgVar");       
                     }
       ;
@@ -31,13 +32,15 @@ exp:  CNUMBER                     { Complejo c = (Complejo) $1.obj;
                                     maq.code("cNumber");
                                     maq.code(c);
                                   }
-     | VAR                        { maq.code("varPush");
-                                    maq.code((Cadena) $1.obj);
+     | VAR                        { Cadena c = (Cadena)$1.obj;
+                                    maq.code("varPush");
+                                    maq.code(c);
                                     maq.code("getVarValue");
                                   }
      | asgn     
-     | BLTIN '(' exp ')'          { maq.code("bltinPush");
-                                    maq.code((Cadena) $1.obj);
+     | BLTIN '(' exp ')'          { Cadena c = (Cadena)$1.obj;
+                                    maq.code("bltinPush");
+                                    maq.code(c);
                                     maq.code("bltin");                                    
                                   }
      | exp '+' exp                { maq.code("add"); }  
@@ -86,7 +89,7 @@ exp:  CNUMBER                     { Complejo c = (Complejo) $1.obj;
 
     Parser yyparser;
     
-    System.out.print("Expression: ");
+    System.out.println("Expression:");
     
 	  yyparser = new Parser(new InputStreamReader(System.in));    
 
