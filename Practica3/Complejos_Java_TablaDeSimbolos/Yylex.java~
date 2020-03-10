@@ -596,9 +596,9 @@ class Yylex {
           case 11: break;
           case 6: 
             { Auxiliar a = new Auxiliar();
-              int [] cmp = a.obtenerComponentes(yytext());
-              yyparser.yylval = new ParserVal( new Complejo(cmp[0], cmp[1]) );
-              return Parser.CNUMBER;
+  int [] cmp = a.obtenerComponentes(yytext());
+  yyparser.yylval = new ParserVal( new Complejo(cmp[0], cmp[1]) );
+  return Parser.CNUMBER;
             } 
             // fall through
           case 12: break;
