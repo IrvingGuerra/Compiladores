@@ -2,7 +2,7 @@
   import java.io.*;
   import java.util.ArrayList;
 %}
-
+%token DIG
 %token VAR
 %token CNUMBER
 
@@ -14,29 +14,48 @@
 list:	/* nada */
 			| list '\n'
       | list asgn '\n' {}
-			| list exp '\n' {Complejo res = (Complejo) $2.obj; System.out.println("Real: " + res.getReal() + "Img: " + res.getImg());}
+			| list exp '\n' {Complejo res = (Complejo) $2.obj;imprimeComplejo(res);}
 			;
-asgn: VAR '=' exp   { Cadena c = (Cadena) $1.obj; 
-                      Symbol s = lookUpTable(c.getCadena());
-                      System.out.println("Is it in the table?: " + s);
-                      if (s == null)
-                        install(c.getCadena(), (Complejo) $3.obj);
-                     }
+asgn: VAR '=' exp     { Cadena c = (Cadena) $1.obj; 
+                        Symbol s = lookUpTable(c.getCadena());
+                        if (s == null)
+                            install(c.getCadena(), (Complejo) $3.obj);
+                          else
+                            update(s, (Complejo) $3.obj);
+                        }
       ;
-exp:  CNUMBER      {Complejo c = (Complejo) $1.obj;}
-     | VAR          { Cadena c = (Cadena) $1.obj;
-                      Symbol s = lookUpTable(c.getCadena());
-                      Complejo data = (Complejo) s.getData();
-                      $$ = new ParserVal(data);
-                    }
+exp:  CNUMBER         {Complejo c = (Complejo) $1.obj;}
+      | VAR           { Cadena c = (Cadena) $1.obj;
+                        Symbol s = lookUpTable(c.getCadena());
+                        if (s != null) {
+                          Complejo data = (Complejo) s.getData();
+                          $$ = new ParserVal(data);
+                        } else {
+                          yyerror("Variable no declarada");
+                          System.exit(0);
+                        }
+                      }
      | asgn
-     | exp '+' exp {Complejo c1 = (Complejo) $1.obj; Complejo c2 = (Complejo) $3.obj;
+     | exp '+' exp {Complejo c1 = (Complejo) $1.obj; 
+                    Complejo c2 = (Complejo) $3.obj;
                     Complejo res = sumaComplejos(c1, c2);
                     $$ = new ParserVal(res);
                    }
-     | exp '-' exp {}
-     | exp '*' exp {}
-     | exp '/' exp {}
+     | exp '-' exp {Complejo c1 = (Complejo) $1.obj; 
+                    Complejo c2 = (Complejo) $3.obj;
+                    Complejo res = restaComplejos(c1, c2);
+                    $$ = new ParserVal(res);
+                   }
+     | exp '*' exp {Complejo c1 = (Complejo) $1.obj; 
+                    Complejo c2 = (Complejo) $3.obj;
+                    Complejo res = multiplicaComplejos(c1, c2);
+                    $$ = new ParserVal(res);
+                   }
+     | exp '/' exp {Complejo c1 = (Complejo) $1.obj; 
+                    Complejo c2 = (Complejo) $3.obj;
+                    Complejo res = divideComplejos(c1, c2);
+                    $$ = new ParserVal(res);
+                   }
      | '(' exp ')' {Complejo c = (Complejo) $2.obj; $$ = new ParserVal(c); }
     ;
 %%
@@ -72,6 +91,22 @@ exp:  CNUMBER      {Complejo c = (Complejo) $1.obj;}
                         c1.getImg() + c2.getImg());
     return res;
   }
+  public Complejo restaComplejos(Complejo c1, Complejo c2) {
+    Complejo res = new Complejo(c1.getReal() - c2.getReal(),
+                        c1.getImg() - c2.getImg());
+    return res;
+  }
+  public Complejo multiplicaComplejos(Complejo c1, Complejo c2) {
+    Complejo res = new Complejo(c1.getReal()*c2.getReal() - c1.getImg()*c2.getImg(),
+                        c1.getImg()*c2.getReal() + c1.getReal()*c2.getImg());
+    return res;
+  }
+  public Complejo divideComplejos(Complejo c1, Complejo c2) {
+    double d = c2.getReal()*c2.getReal() + c2.getImg()*c2.getImg();
+    Complejo res = new Complejo(c1.getReal()*c2.getReal() + c1.getImg()*c2.getImg() / d,
+                        c1.getImg()*c2.getReal() - c1.getReal()*c2.getImg() / d);
+    return res;
+  }
 
 
 
@@ -94,14 +129,27 @@ void install(String name, Complejo data) {
   symbolTable.add(s);
 }
 
+void update(Symbol s, Complejo data) {
+  int position = symbolTable.indexOf(s);
+  Symbol sn = new Symbol(s.getName(), s.getType(), data);
+  symbolTable.set(position,sn);
+}
+
+void imprimeComplejo(Complejo c) {
+  if(c.getImg() != 0)
+      System.out.println(c.getReal()+","+c.getImg());
+   else
+      System.out.println(c.getReal());
+}
 
 
-  public static void main(String args[]) throws IOException {
+
+public static void main(String args[]) throws IOException {
     System.out.println("Calculadora Números Complejos");
 
     Parser yyparser;
 
-    System.out.print("Expression: ");
+    System.out.println("Ingresa una expresion: ");
 
 	  yyparser = new Parser(new InputStreamReader(System.in));
 

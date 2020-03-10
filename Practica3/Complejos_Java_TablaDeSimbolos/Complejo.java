@@ -1,13 +1,13 @@
 public class Complejo {
-  private int real;
-  private int img;
+  private double real;
+  private double img;
 
-  public Complejo(int real, int img) {
+  public Complejo(double real, double img) {
     this.real = real;
     this.img  = img;
   }
 
-  public int getReal() {return real; }
+  public double getReal() {return real; }
   
-  public int getImg() {return img; }
+  public double getImg() {return img; }
 }

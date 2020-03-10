@@ -157,8 +157,9 @@ final ParserVal dup_yyval(ParserVal val)
   return dup;
 }
 //#### end semantic value section ####
-public final static short VAR=257;
-public final static short CNUMBER=258;
+public final static short DIG=257;
+public final static short VAR=258;
+public final static short CNUMBER=259;
 public final static short YYERRCODE=256;
 final static short yylhs[] = {                           -1,
     0,    0,    0,    0,    1,    2,    2,    2,    2,    2,
@@ -189,7 +190,7 @@ final static short yyrindex[] = {                         0,
 final static short yygindex[] = {                         0,
    11,    5,
 };
-final static int YYTABLESIZE=248;
+final static int YYTABLESIZE=249;
 static short yytable[];
 static { yytable();}
 static void yytable(){
@@ -215,10 +216,10 @@ yytable = new short[]{                          4,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    2,    3,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    2,    3,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    2,    3,
+    0,    0,    0,    0,    0,    0,    0,    2,    3,
 };
 }
 static short yycheck[];
@@ -246,14 +247,14 @@ yycheck = new short[] {                         10,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,   -1,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  258,  259,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,  258,  259,
 };
 }
 final static short YYFINAL=1;
-final static short YYMAXTOKEN=258;
+final static short YYMAXTOKEN=259;
 final static String yyname[] = {
 "end-of-file",null,null,null,null,null,null,null,null,null,"'\\n'",null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
@@ -271,7 +272,7 @@ null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,null,null,null,null,"VAR","CNUMBER",
+null,null,null,null,null,null,null,"DIG","VAR","CNUMBER",
 };
 final static String yyrule[] = {
 "$accept : list",
@@ -290,7 +291,7 @@ final static String yyrule[] = {
 "exp : '(' exp ')'",
 };
 
-//#line 43 "complejos.y"
+//#line 62 "complejos.y"
 
   private Yylex lexer;
 
@@ -323,6 +324,22 @@ final static String yyrule[] = {
                         c1.getImg() + c2.getImg());
     return res;
   }
+  public Complejo restaComplejos(Complejo c1, Complejo c2) {
+    Complejo res = new Complejo(c1.getReal() - c2.getReal(),
+                        c1.getImg() - c2.getImg());
+    return res;
+  }
+  public Complejo multiplicaComplejos(Complejo c1, Complejo c2) {
+    Complejo res = new Complejo(c1.getReal()*c2.getReal() - c1.getImg()*c2.getImg(),
+                        c1.getImg()*c2.getReal() + c1.getReal()*c2.getImg());
+    return res;
+  }
+  public Complejo divideComplejos(Complejo c1, Complejo c2) {
+    double d = c2.getReal()*c2.getReal() + c2.getImg()*c2.getImg();
+    Complejo res = new Complejo(c1.getReal()*c2.getReal() + c1.getImg()*c2.getImg() / d,
+                        c1.getImg()*c2.getReal() - c1.getReal()*c2.getImg() / d);
+    return res;
+  }
 
 
 
@@ -345,21 +362,34 @@ void install(String name, Complejo data) {
   symbolTable.add(s);
 }
 
+void update(Symbol s, Complejo data) {
+  int position = symbolTable.indexOf(s);
+  Symbol sn = new Symbol(s.getName(), s.getType(), data);
+  symbolTable.set(position,sn);
+}
+
+void imprimeComplejo(Complejo c) {
+  if(c.getImg() != 0)
+      System.out.println(c.getReal()+","+c.getImg());
+   else
+      System.out.println(c.getReal());
+}
 
 
-  public static void main(String args[]) throws IOException {
+
+public static void main(String args[]) throws IOException {
     System.out.println("Calculadora Números Complejos");
 
     Parser yyparser;
 
-    System.out.print("Expression: ");
+    System.out.println("Ingresa una expresion: ");
 
 	  yyparser = new Parser(new InputStreamReader(System.in));
 
     yyparser.yyparse();
 
   }
-//#line 291 "Parser.java"
+//#line 321 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -519,53 +549,72 @@ case 3:
 break;
 case 4:
 //#line 17 "complejos.y"
-{Complejo res = (Complejo) val_peek(1).obj; System.out.println("Real: " + res.getReal() + "Img: " + res.getImg());}
+{Complejo res = (Complejo) val_peek(1).obj;imprimeComplejo(res);}
 break;
 case 5:
 //#line 19 "complejos.y"
 { Cadena c = (Cadena) val_peek(2).obj; 
-                      Symbol s = lookUpTable(c.getCadena());
-                      System.out.println("Is it in the table?: " + s);
-                      if (s == null)
-                        install(c.getCadena(), (Complejo) val_peek(0).obj);
-                     }
+                        Symbol s = lookUpTable(c.getCadena());
+                        if (s == null)
+                            install(c.getCadena(), (Complejo) val_peek(0).obj);
+                          else
+                            update(s, (Complejo) val_peek(0).obj);
+                        }
 break;
 case 6:
-//#line 26 "complejos.y"
+//#line 27 "complejos.y"
 {Complejo c = (Complejo) val_peek(0).obj;}
 break;
 case 7:
-//#line 27 "complejos.y"
+//#line 28 "complejos.y"
 { Cadena c = (Cadena) val_peek(0).obj;
-                      Symbol s = lookUpTable(c.getCadena());
-                      Complejo data = (Complejo) s.getData();
-                      yyval = new ParserVal(data);
-                    }
+                        Symbol s = lookUpTable(c.getCadena());
+                        if (s != null) {
+                          Complejo data = (Complejo) s.getData();
+                          yyval = new ParserVal(data);
+                        } else {
+                          yyerror("Variable no declarada");
+                          System.exit(0);
+                        }
+                      }
 break;
 case 9:
-//#line 33 "complejos.y"
-{Complejo c1 = (Complejo) val_peek(2).obj; Complejo c2 = (Complejo) val_peek(0).obj;
+//#line 39 "complejos.y"
+{Complejo c1 = (Complejo) val_peek(2).obj; 
+                    Complejo c2 = (Complejo) val_peek(0).obj;
                     Complejo res = sumaComplejos(c1, c2);
                     yyval = new ParserVal(res);
                    }
 break;
 case 10:
-//#line 37 "complejos.y"
-{}
+//#line 44 "complejos.y"
+{Complejo c1 = (Complejo) val_peek(2).obj; 
+                    Complejo c2 = (Complejo) val_peek(0).obj;
+                    Complejo res = restaComplejos(c1, c2);
+                    yyval = new ParserVal(res);
+                   }
 break;
 case 11:
-//#line 38 "complejos.y"
-{}
+//#line 49 "complejos.y"
+{Complejo c1 = (Complejo) val_peek(2).obj; 
+                    Complejo c2 = (Complejo) val_peek(0).obj;
+                    Complejo res = multiplicaComplejos(c1, c2);
+                    yyval = new ParserVal(res);
+                   }
 break;
 case 12:
-//#line 39 "complejos.y"
-{}
+//#line 54 "complejos.y"
+{Complejo c1 = (Complejo) val_peek(2).obj; 
+                    Complejo c2 = (Complejo) val_peek(0).obj;
+                    Complejo res = divideComplejos(c1, c2);
+                    yyval = new ParserVal(res);
+                   }
 break;
 case 13:
-//#line 40 "complejos.y"
+//#line 59 "complejos.y"
 {Complejo c = (Complejo) val_peek(1).obj; yyval = new ParserVal(c); }
 break;
-//#line 492 "Parser.java"
+//#line 541 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

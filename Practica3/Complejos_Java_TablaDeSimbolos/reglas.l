@@ -18,12 +18,11 @@ digits      = [0-9]
 number      = (0|[1-9]+{digits}*)\.?{digits}*
 im          = [i]
 complexnum  = {ws}*[-]*{ws}*{number}{ws}*[+|-]{ws}*{number}{ws}*{im}{ws}*
-var         = [a-zA-Z][a-zA-Z]*
+var         = [a-zA-Z][a-zA-Z]* | [a-zA-Z][a-zA-Z]*{digits}
 
 
 %%
 {var} {
-  System.out.println("Vi una variable:");
   yyparser.yylval = new ParserVal(new Cadena(yytext()));
   return Parser.VAR;
 }
@@ -36,6 +35,7 @@ var         = [a-zA-Z][a-zA-Z]*
 {op} {
   return (int) yycharat(0);
   }
+{digits} { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.DIG;}
 {nl}   {
   return (int) yycharat(0);
   }
