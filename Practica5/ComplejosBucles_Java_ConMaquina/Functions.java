@@ -28,16 +28,7 @@ public class Functions {
     
     Complejo res = new Complejo(real, img);
     return res;
-  }
-
-  public Complejo pow(Complejo c, Cadena powN) {
-    int number = Integer.parseInt(powN.getCadena());
-    Complejo res = c;
-    for (int i = 1; i < number; i++) {
-      res = multiplicaComplejos(res, c);    
-    }
-    return res;
-  }
+  }  
 
   private Complejo multiplicaComplejos(Complejo c1, Complejo c2) {
     Complejo res = new Complejo((c1.getReal() * c2.getReal()) - (c1.getImg() * c2.getImg()),

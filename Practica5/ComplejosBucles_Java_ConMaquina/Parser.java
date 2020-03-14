@@ -17,9 +17,8 @@
 
 
 //#line 2 "complejos.y"
-  import java.io.*;
-  import java.util.ArrayList;
-//#line 20 "Parser.java"
+  import java.io.*;  
+//#line 19 "Parser.java"
 
 
 
@@ -157,112 +156,233 @@ final ParserVal dup_yyval(ParserVal val)
   return dup;
 }
 //#### end semantic value section ####
-public final static short VAR=257;
-public final static short CNUMBER=258;
-public final static short BLTIN=259;
-public final static short DIG=260;
+public final static short BLTIN=257;
+public final static short IF=258;
+public final static short ELSE=259;
+public final static short WHILE=260;
+public final static short PRINT=261;
+public final static short EQ=262;
+public final static short NEQ=263;
+public final static short GT=264;
+public final static short GE=265;
+public final static short LT=266;
+public final static short LE=267;
+public final static short DIG=268;
+public final static short VAR=269;
+public final static short CNUMBER=270;
 public final static short YYERRCODE=256;
 final static short yylhs[] = {                           -1,
-    0,    0,    0,    0,    1,    2,    2,    2,    2,    2,
-    2,    2,    2,    2,    2,
+    0,    0,    0,    0,    0,    1,    2,    2,    2,    2,
+    2,    2,    5,    4,    7,    6,    8,    8,    8,    3,
+    3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
+    3,    3,    3,    3,    3,
 };
 final static short yylen[] = {                            2,
-    0,    2,    3,    3,    3,    1,    1,    1,    6,    4,
+    0,    2,    3,    3,    3,    3,    1,    2,    4,    4,
+    7,    3,    3,    1,    1,    0,    0,    2,    2,    1,
+    1,    1,    4,    3,    3,    3,    3,    3,    3,    3,
     3,    3,    3,    3,    3,
 };
 final static short yydefred[] = {                         1,
-    0,    0,    6,    0,    2,    0,    0,    0,    0,    0,
-    8,    0,    3,    0,    0,    0,    0,    4,    0,    0,
-   15,    0,    0,   13,   14,    0,   10,    0,    9,
+    0,    0,   15,   14,    0,    0,   20,    2,   17,    0,
+    0,    0,    0,    0,    0,    0,   22,    0,    0,    0,
+    0,    3,    4,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    5,    0,    0,    0,    0,    0,    0,
+   18,   12,   19,    0,   35,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,   28,    0,   16,   16,   23,
+   13,    9,    0,    0,   16,   11,
 };
 final static short yydgoto[] = {                          1,
-   11,    8,
+   17,   12,   44,   14,   37,   62,   15,   20,
 };
 final static short yysindex[] = {                         0,
-  -10,  -51,    0,  -24,    0,  -39,   14,   -2,  -39,  -39,
-    0,  -16,    0,  -39,  -39,  -39,  -39,    0,   16,  -38,
-    0,  -30,  -30,    0,    0, -232,    0,   -9,    0,
+  162,  -38,    0,    0,  -27,  -57,    0,    0,    0,  -27,
+   -7,   -5,  401,  -32,  -32,  -27,    0,  432,  -27,  157,
+  346,    0,    0,  -27,  -27,  -27,  -27,  -27,  -27,  -27,
+  -27,  -27,  -27,    0, -259,  -27,  196,  196,  417,  432,
+    0,    0,    0,  432,    0,  432,  432,  432,  432,  432,
+  432,  132,  132,  -77,  -77,    0,  426,    0,    0,    0,
+    0,    0, -249,  196,    0,    0,
 };
 final static short yyrindex[] = {                         0,
-    0,   -8,    0,    0,    0,    0,   22,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,   13,    0,
-    0,    3,    8,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,  -10,    0,    0,    0,    0,
+  438,    0,    0,    0,    0,    0,    0,  102,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,   52,
+    0,    0,    0,  116,    0,   57,   76,   81,   95,  109,
+  143,   32,   38,    4,   18,    0,    0,    0,    0,    0,
+    0,    0,  181,    0,    0,    0,
 };
 final static short yygindex[] = {                         0,
-   37,    5,
+   10,  -14,  477,    0,   -3,  -58,    0,    0,
 };
-final static int YYTABLESIZE=249;
+final static int YYTABLESIZE=705;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                          5,
-    6,    7,   27,   16,   15,   26,   14,   18,   17,    9,
-   12,   16,   12,   19,   20,   10,   17,   11,   22,   23,
-   24,   25,    5,   13,   21,   16,   15,   28,   14,    6,
-   17,   29,    7,    7,    7,    7,    7,    7,    7,   16,
-   15,    0,   14,   12,   17,   12,   12,   12,   11,    0,
-   11,   11,   11,    5,    0,    0,    5,   16,   15,    0,
-   14,    0,   17,    8,    8,    0,    8,    0,    8,    0,
+yytable = new short[]{                         21,
+   63,   16,   22,   19,   23,   43,   66,   36,   56,   64,
+   11,   38,   10,   26,    0,    0,   35,    0,    0,    0,
+    0,    0,   58,   59,    0,    0,    0,   27,    0,   21,
+   21,   21,   21,    0,   21,    0,   21,    0,    0,    0,
+    0,   25,    0,   26,   26,   26,   26,   24,   26,   65,
+   26,    0,    0,    0,    0,    0,    0,   27,   27,   27,
+   27,    6,   27,    0,   27,    0,   29,    0,    0,    0,
+    0,   25,   25,    0,   25,    0,   25,   24,   24,    0,
+   24,    0,   24,   21,    0,   30,    0,    0,    0,    0,
+   31,    6,    6,    0,    0,    0,   29,   29,    0,    0,
+    0,    0,    0,    0,   32,    0,    0,    0,    0,    0,
+    0,    8,   21,    0,   21,   30,   30,    0,   33,    0,
+   31,   31,    0,    0,    0,    7,   26,    0,   26,    0,
+    0,    0,    0,    0,   32,   32,    0,    0,    0,    0,
+   27,    8,   27,    0,    0,    0,    0,    0,   33,   33,
+    0,    0,   34,    0,   25,    7,   25,    0,    0,    0,
+   24,    0,   24,    0,    0,    0,   41,    0,    0,    0,
+    0,    8,    0,   32,    6,    0,    6,    0,   33,   29,
+    0,   29,   34,   34,   24,   25,   26,   27,   28,   29,
+   10,    0,    0,    0,    0,    0,   10,    0,   30,    0,
+   30,   10,    0,   31,    0,   31,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,   32,    0,   32,
+   10,    0,    0,    0,    8,   35,    8,    0,    0,    2,
+    0,   33,    0,   33,    0,   10,    0,    0,    7,    0,
+    7,    6,    7,    0,    0,    0,   21,   21,   21,   21,
+   21,   21,   21,   21,   21,   21,   21,    0,   21,   21,
+   26,   26,   26,   26,   26,   34,    0,   34,    0,    0,
+    0,    0,   26,   26,   27,   27,   27,   27,   27,    9,
+    0,   42,    0,    0,    9,    0,   27,   27,   25,   25,
+   25,   25,   25,    0,   24,   24,   24,   24,   24,    0,
+   25,   25,    0,   10,    0,   10,   24,   24,    6,    6,
+    6,    6,    6,   29,   29,   29,   29,   29,    9,    0,
+    6,    6,    0,    0,    0,   29,   29,    0,    0,    0,
+    0,    0,   30,   30,   30,   30,   30,   31,   31,   31,
+   31,   31,    0,    0,   30,   30,    0,    0,    0,   31,
+   31,   32,   32,   32,   32,   32,    0,    0,    8,    8,
+    8,    8,    8,   32,   32,   33,   33,   33,   33,   33,
+    8,    8,    7,    7,    7,    7,    7,   33,   33,    0,
+    0,    0,    0,    0,    7,    7,   45,   32,   31,    0,
+   30,    0,   33,   24,   25,   26,   27,   28,   29,   34,
+   34,   34,   34,   34,    0,    0,    0,    0,    0,    0,
+   34,   34,   34,    2,    3,    0,    4,    5,    2,    3,
+    0,    4,    5,    0,    0,    6,    7,    0,    0,    0,
+    6,    7,    0,    0,    0,    0,    0,   10,   10,   35,
+   10,   10,   32,   31,    0,   30,    0,   33,    0,   10,
+   10,    0,    2,    3,    0,    4,    5,   60,   32,   31,
+    0,   30,    0,   33,    6,    7,   61,   32,   31,    0,
+   30,    0,   33,   32,   31,    0,   30,   13,   33,   22,
+   22,   18,   22,    0,   22,    0,   21,    0,    0,    0,
+    0,    0,   39,    0,   35,   40,    0,    0,    0,    0,
+   46,   47,   48,   49,   50,   51,   52,   53,   54,   55,
+   35,    0,   57,    0,    0,    0,    0,    0,    0,   35,
+    0,    0,    0,    0,    0,   35,    0,    0,    0,    0,
+    0,   22,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,   24,   25,   26,
+   27,   28,   29,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    2,    3,    4,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    2,    3,    4,
+    0,    0,   24,   25,   26,   27,   28,   29,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,   24,   25,
+   26,   27,   28,   29,    0,    0,    0,   24,   25,   26,
+   27,   28,   29,   24,   25,   26,   27,   28,   29,   22,
+   22,   22,   22,   22,   22,
 };
 }
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
 yycheck = new short[] {                         10,
-   40,   10,   41,   42,   43,   44,   45,   10,   47,   61,
-    6,   42,   10,    9,   10,   40,   47,   10,   14,   15,
-   16,   17,   10,   10,   41,   42,   43,  260,   45,   40,
-   47,   41,   41,   42,   43,   44,   45,    1,   47,   42,
-   43,   -1,   45,   41,   47,   43,   44,   45,   41,   -1,
-   43,   44,   45,   41,   -1,   -1,   44,   42,   43,   -1,
-   45,   -1,   47,   42,   43,   -1,   45,   -1,   47,   -1,
+   59,   40,   10,   61,   10,   20,   65,   40,  268,  259,
+    1,   15,   40,   10,   -1,   -1,   94,   -1,   -1,   -1,
+   -1,   -1,   37,   38,   -1,   -1,   -1,   10,   -1,   40,
+   41,   42,   43,   -1,   45,   -1,   47,   -1,   -1,   -1,
+   -1,   10,   -1,   40,   41,   42,   43,   10,   45,   64,
+   47,   -1,   -1,   -1,   -1,   -1,   -1,   40,   41,   42,
+   43,   10,   45,   -1,   47,   -1,   10,   -1,   -1,   -1,
+   -1,   40,   41,   -1,   43,   -1,   45,   40,   41,   -1,
+   43,   -1,   45,   94,   -1,   10,   -1,   -1,   -1,   -1,
+   10,   40,   41,   -1,   -1,   -1,   40,   41,   -1,   -1,
+   -1,   -1,   -1,   -1,   10,   -1,   -1,   -1,   -1,   -1,
+   -1,   10,  123,   -1,  125,   40,   41,   -1,   10,   -1,
+   40,   41,   -1,   -1,   -1,   10,  123,   -1,  125,   -1,
+   -1,   -1,   -1,   -1,   40,   41,   -1,   -1,   -1,   -1,
+  123,   40,  125,   -1,   -1,   -1,   -1,   -1,   40,   41,
+   -1,   -1,   10,   -1,  123,   40,  125,   -1,   -1,   -1,
+  123,   -1,  125,   -1,   -1,   -1,   10,   -1,   -1,   -1,
+   -1,   10,   -1,   42,  123,   -1,  125,   -1,   47,  123,
+   -1,  125,   40,   41,  262,  263,  264,  265,  266,  267,
+   10,   -1,   -1,   -1,   -1,   -1,   40,   -1,  123,   -1,
+  125,   40,   -1,  123,   -1,  125,   -1,   -1,   -1,   -1,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,  123,   -1,  125,
+   40,   -1,   -1,   -1,  123,   94,  125,   -1,   -1,  257,
+   -1,  123,   -1,  125,   -1,   40,   -1,   -1,  123,   -1,
+  125,  269,  270,   -1,   -1,   -1,  257,  258,  259,  260,
+  261,  262,  263,  264,  265,  266,  267,   -1,  269,  270,
+  257,  258,  259,  260,  261,  123,   -1,  125,   -1,   -1,
+   -1,   -1,  269,  270,  257,  258,  259,  260,  261,  123,
+   -1,  125,   -1,   -1,  123,   -1,  269,  270,  257,  258,
+  259,  260,  261,   -1,  257,  258,  259,  260,  261,   -1,
+  269,  270,   -1,  123,   -1,  125,  269,  270,  257,  258,
+  259,  260,  261,  257,  258,  259,  260,  261,  123,   -1,
+  269,  270,   -1,   -1,   -1,  269,  270,   -1,   -1,   -1,
+   -1,   -1,  257,  258,  259,  260,  261,  257,  258,  259,
+  260,  261,   -1,   -1,  269,  270,   -1,   -1,   -1,  269,
+  270,  257,  258,  259,  260,  261,   -1,   -1,  257,  258,
+  259,  260,  261,  269,  270,  257,  258,  259,  260,  261,
+  269,  270,  257,  258,  259,  260,  261,  269,  270,   -1,
+   -1,   -1,   -1,   -1,  269,  270,   41,   42,   43,   -1,
+   45,   -1,   47,  262,  263,  264,  265,  266,  267,  257,
+  258,  259,  260,  261,   -1,   -1,   -1,   -1,   -1,   -1,
+   10,  269,  270,  257,  258,   -1,  260,  261,  257,  258,
+   -1,  260,  261,   -1,   -1,  269,  270,   -1,   -1,   -1,
+  269,  270,   -1,   -1,   -1,   -1,   -1,  257,  258,   94,
+  260,  261,   42,   43,   -1,   45,   -1,   47,   -1,  269,
+  270,   -1,  257,  258,   -1,  260,  261,   41,   42,   43,
+   -1,   45,   -1,   47,  269,  270,   41,   42,   43,   -1,
+   45,   -1,   47,   42,   43,   -1,   45,    1,   47,   42,
+   43,    5,   45,   -1,   47,   -1,   10,   -1,   -1,   -1,
+   -1,   -1,   16,   -1,   94,   19,   -1,   -1,   -1,   -1,
+   24,   25,   26,   27,   28,   29,   30,   31,   32,   33,
+   94,   -1,   36,   -1,   -1,   -1,   -1,   -1,   -1,   94,
+   -1,   -1,   -1,   -1,   -1,   94,   -1,   -1,   -1,   -1,
+   -1,   94,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,  262,  263,  264,
+  265,  266,  267,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,  259,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,  259,
+   -1,   -1,  262,  263,  264,  265,  266,  267,   -1,   -1,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,  262,  263,
+  264,  265,  266,  267,   -1,   -1,   -1,  262,  263,  264,
+  265,  266,  267,  262,  263,  264,  265,  266,  267,  262,
+  263,  264,  265,  266,  267,
 };
 }
 final static short YYFINAL=1;
-final static short YYMAXTOKEN=260;
+final static short YYMAXTOKEN=270;
 final static String yyname[] = {
 "end-of-file",null,null,null,null,null,null,null,null,null,"'\\n'",null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,"'('","')'","'*'","'+'",
-"','","'-'",null,"'/'",null,null,null,null,null,null,null,null,null,null,null,
+null,"'-'",null,"'/'",null,null,null,null,null,null,null,null,null,null,null,
 null,null,"'='",null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,"'^'",null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+null,null,"'{'",null,"'}'",null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
@@ -270,46 +390,64 @@ null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,null,null,null,null,"VAR","CNUMBER","BLTIN","DIG",
+null,null,null,null,null,null,null,null,null,"BLTIN","IF","ELSE","WHILE",
+"PRINT","EQ","NEQ","GT","GE","LT","LE","DIG","VAR","CNUMBER",
 };
 final static String yyrule[] = {
 "$accept : list",
 "list :",
 "list : list '\\n'",
 "list : list asgn '\\n'",
+"list : list stmt '\\n'",
 "list : list exp '\\n'",
 "asgn : VAR '=' exp",
+"stmt : exp",
+"stmt : PRINT exp",
+"stmt : while cond stmt end",
+"stmt : if cond stmt end",
+"stmt : if cond stmt end ELSE stmt end",
+"stmt : '{' stmtlist '}'",
+"cond : '(' exp ')'",
+"while : WHILE",
+"if : IF",
+"end :",
+"stmtlist :",
+"stmtlist : stmtlist '\\n'",
+"stmtlist : stmtlist stmt",
 "exp : CNUMBER",
 "exp : VAR",
 "exp : asgn",
-"exp : BLTIN '(' exp ',' DIG ')'",
 "exp : BLTIN '(' exp ')'",
 "exp : exp '+' exp",
 "exp : exp '-' exp",
 "exp : exp '*' exp",
 "exp : exp '/' exp",
+"exp : exp '^' DIG",
+"exp : exp EQ exp",
+"exp : exp NEQ exp",
+"exp : exp GT exp",
+"exp : exp GE exp",
+"exp : exp LT exp",
+"exp : exp LE exp",
 "exp : '(' exp ')'",
 };
 
-//#line 90 "complejos.y"
+//#line 103 "complejos.y"
 
-/** CÓDIGO DE SOPORTE **/
+/** SUPPORT CODE **/
+  static Maquina maq = new Maquina();
   private Yylex lexer;
-  Functions f     = new Functions();
-
 
   private int yylex () {
     int yyl_return = -1;
     try {
-      yylval = new ParserVal(0);
-      yyl_return = lexer.yylex();
+      yylval = new ParserVal(0);        
+      yyl_return = lexer.yylex();      
     }
     catch (IOException e) {
       System.err.println("IO error :"+e);
-    }
+    }  
+
     return yyl_return;
   }
 
@@ -322,55 +460,27 @@ final static String yyrule[] = {
   public Parser(Reader r) {
     lexer = new Yylex(r, this);
   }
-
-/* Metodos de la tabla de símbolos */
-ArrayList<Symbol> symbolTable = new ArrayList<>();
-
-Symbol lookUpTable(String symbolName) {
-  for (Symbol s: symbolTable) {
-    if (s.getName().compareTo(symbolName) == 0) { // The symbol is already in the table !
-      return s;
-    }
-  }
-  return null;
-}
-
-void install(String name, Complejo data, short type) {
-  Symbol s = new Symbol(name, type, data);
-  symbolTable.add(s);
-}
-
-void update(Symbol s, Complejo data) {
-  Symbol newSymbol = s;
-  symbolTable.remove(s);
-  newSymbol.setData(data);
-  symbolTable.add(newSymbol);
-}
-
-/* Método para la inicializacion de las funciones disponibles */
-void init() {
-  /* Se inicializan las funciones */
-  String[] funcNames = {"exp", "sin", "cos", "pow"};
-  for (int i = 0; i < funcNames.length; i++) {
-    install(funcNames[i], null, (short) 2);
-  }
-}
-
-  public static void main(String args[]) throws IOException {
-    System.out.println("Calculadora Números Complejos Cientifica");
+  
+  boolean flag = false;
+  
+  public static void main(String args[]) throws IOException {    
+    System.out.println(".:: Complex Number Calculator ::.");
 
     Parser yyparser;
-
-    System.out.print("Ingresa una expresion: ");
-
-	  yyparser = new Parser(new InputStreamReader(System.in));
-
-    yyparser.init();
-
-    yyparser.yyparse();
+    maq.initCode();
+    
+    while (true) {
+      System.out.print("Expression: ");
+      maq.newProgram();
+      
+      yyparser = new Parser(new InputStreamReader(System.in));        
+      yyparser.yyparse();
+            
+      maq.execute(0);
+    }
 
   }
-//#line 302 "Parser.java"
+//#line 412 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -525,109 +635,169 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 3:
-//#line 18 "complejos.y"
-{}
+//#line 22 "complejos.y"
+{ maq.code("STOP"); return 1; }
 break;
 case 4:
-//#line 19 "complejos.y"
-{Complejo res = (Complejo) val_peek(1).obj; res.imprimeComplejo();}
+//#line 23 "complejos.y"
+{ maq.code("STOP"); return 1; }
 break;
 case 5:
-//#line 21 "complejos.y"
-{ Cadena c = (Cadena) val_peek(2).obj;
-                      Symbol s = lookUpTable(c.getCadena());
-                      if (s == null)
-                        install(c.getCadena(), (Complejo) val_peek(0).obj, (short) 1);
-                      else
-                        update(s, (Complejo) val_peek(0).obj);
-                    }
+//#line 24 "complejos.y"
+{ maq.code("printComplex"); maq.code("STOP"); 
+                          return 1;
+                        }
 break;
 case 6:
-//#line 29 "complejos.y"
-{Complejo c = (Complejo) val_peek(0).obj;}
-break;
-case 7:
-//#line 30 "complejos.y"
-{ Cadena c      = (Cadena) val_peek(0).obj;
-                      Symbol s      = lookUpTable(c.getCadena());
-                      if (s != null) {
-                        Complejo data = (Complejo) s.getData();
-                        yyval = new ParserVal(data);
-                      } else {
-                        yyerror("Variable no declarada");
-                        System.exit(0);
-                      }
+//#line 28 "complejos.y"
+{ int numI = maq.code("varPush");
+                      maq.code((Cadena) val_peek(2).obj);
+                      maq.code("asgVar");                       
+                      yyval = new ParserVal(val_peek(0).obj);    
                     }
 break;
+case 7:
+//#line 34 "complejos.y"
+{ maq.code("pop"); }
+break;
+case 8:
+//#line 35 "complejos.y"
+{ maq.code("printComplex"); 
+                    yyval = new ParserVal(val_peek(0).obj); 
+                  }
+break;
 case 9:
-//#line 41 "complejos.y"
-{ Cadena c1       = (Cadena) val_peek(5).obj;
-                                    Symbol s        = lookUpTable(c1.getCadena());
-                                    String fName    = s.getName();
-                                    Complejo res    = new Complejo(0, 0);
-                                    Cadena powN     = (Cadena) val_peek(1).obj;
-
-                                    if (fName.compareTo("pow") == 0) {
-                                      res = f.pow((Complejo) val_peek(3).obj, powN);
-                                    }
-                                    yyval = new ParserVal(res);
-
-                                  }
+//#line 38 "complejos.y"
+{ maq.getProg().setElementAt(val_peek(1).obj, (int) val_peek(3).obj + 1);
+                              maq.getProg().setElementAt(val_peek(0).obj, (int) val_peek(3).obj + 2); 
+                            }
 break;
 case 10:
-//#line 53 "complejos.y"
-{ Cadena c        = (Cadena) val_peek(3).obj;
-                                    Symbol s        = lookUpTable(c.getCadena());
-                                    String fName    = s.getName();
-                                    Complejo res    = new Complejo(0, 0);
-
-                                    if (fName.compareTo("exp") == 0) {
-                                      res = f.exp((Complejo) val_peek(1).obj);
-                                    } else if (fName.compareTo("sin") == 0) {
-                                      res = f.sinus((Complejo) val_peek(1).obj);
-                                    } else if (fName.compareTo("cos") == 0) {
-                                      res = f.cosine((Complejo) val_peek(1).obj);
-                                    }
-                                    yyval = new ParserVal(res);
-                                  }
+//#line 41 "complejos.y"
+{ maq.getProg().setElementAt(val_peek(1).obj, (int) val_peek(3).obj + 1); 
+                              maq.getProg().setElementAt(val_peek(0).obj, (int) val_peek(3).obj + 3); 
+                            }
 break;
 case 11:
-//#line 67 "complejos.y"
-{ Complejo c1   = (Complejo) val_peek(2).obj; Complejo c2 = (Complejo) val_peek(0).obj;
-                                    Complejo res  = new Complejo(0,0);
-                                    res.sumaComplejos(c1, c2);
-                                    yyval            = new ParserVal(res);
-                                  }
+//#line 44 "complejos.y"
+{  maq.getProg().setElementAt(val_peek(4).obj, (int) val_peek(6).obj + 1);
+                                          maq.getProg().setElementAt(val_peek(1).obj, (int) val_peek(6).obj + 2); 
+                                          maq.getProg().setElementAt(val_peek(0).obj, (int) val_peek(6).obj + 3);
+	                                     }
 break;
 case 12:
-//#line 72 "complejos.y"
-{ Complejo c1   = (Complejo) val_peek(2).obj; Complejo c2 = (Complejo) val_peek(0).obj;
-                                    Complejo res  = new Complejo(0,0);
-                                    res.restaComplejos(c1, c2);
-                                    yyval            = new ParserVal(res);
-                                  }
+//#line 48 "complejos.y"
+{yyval  =  val_peek(1); }
 break;
 case 13:
-//#line 77 "complejos.y"
-{ Complejo c1   = (Complejo) val_peek(2).obj; Complejo c2 = (Complejo) val_peek(0).obj;
-                                    Complejo res  = new Complejo(0,0);
-                                    res.multiplicaComplejos(c1, c2);
-                                    yyval            = new ParserVal(res);
-                                  }
+//#line 50 "complejos.y"
+{ maq.code("STOP");                    
+                    yyval = new ParserVal(val_peek(1).obj);
+                  }
 break;
 case 14:
-//#line 82 "complejos.y"
-{ Complejo c1   = (Complejo) val_peek(2).obj; Complejo c2 = (Complejo) val_peek(0).obj;
-                                    Complejo res  = new Complejo(0,0);
-                                    res.divideComplejos(c1, c2);
-                                    yyval            = new ParserVal(res);
-                                  }
+//#line 54 "complejos.y"
+{ int numI = maq.code("whileCode"); 
+                               maq.code("STOP"); maq.code("STOP");
+                               yyval = new ParserVal(new Integer(numI));
+                             }
 break;
 case 15:
-//#line 87 "complejos.y"
-{Complejo c = (Complejo) val_peek(1).obj; yyval = new ParserVal(c); }
+//#line 59 "complejos.y"
+{ int numI = maq.code("ifCode");
+          maq.code("STOP"); maq.code("STOP"); maq.code("STOP");
+          yyval = new ParserVal(new Integer(numI));
+        }
 break;
-//#line 554 "Parser.java"
+case 16:
+//#line 63 "complejos.y"
+{ maq.code("STOP");
+           yyval = new ParserVal(new Integer(maq.getProg().size())); 
+         }
+break;
+case 17:
+//#line 67 "complejos.y"
+{ yyval = new ParserVal(new Integer(maq.getProg().size())); }
+break;
+case 20:
+//#line 70 "complejos.y"
+{ Complejo c = (Complejo) val_peek(0).obj; 
+                                    int numI = maq.code("cNumber");                                   
+                                    maq.code(c);
+                                    yyval = new ParserVal(new Integer(numI));
+                                  }
+break;
+case 21:
+//#line 75 "complejos.y"
+{ int numI = maq.code("varPush");
+                                    maq.code((Cadena) val_peek(0).obj);
+                                    maq.code("getVarValue");                                    
+                                    yyval = new ParserVal(new Integer(numI));
+                                  }
+break;
+case 22:
+//#line 80 "complejos.y"
+{}
+break;
+case 23:
+//#line 81 "complejos.y"
+{ maq.code("bltinPush");
+                                    maq.code((Cadena) val_peek(3).obj);
+                                    maq.code("bltin");                                    
+                                  }
+break;
+case 24:
+//#line 85 "complejos.y"
+{ maq.code("add"); }
+break;
+case 25:
+//#line 86 "complejos.y"
+{ maq.code("sub"); }
+break;
+case 26:
+//#line 87 "complejos.y"
+{ maq.code("mult"); }
+break;
+case 27:
+//#line 88 "complejos.y"
+{ maq.code("div"); }
+break;
+case 28:
+//#line 89 "complejos.y"
+{ maq.code("powN");
+                                    maq.code((Cadena) val_peek(0).obj);
+                                    maq.code("pow");                                    
+                                  }
+break;
+case 29:
+//#line 94 "complejos.y"
+{ maq.code("eq");}
+break;
+case 30:
+//#line 95 "complejos.y"
+{ maq.code("neq");}
+break;
+case 31:
+//#line 96 "complejos.y"
+{ maq.code("gt");}
+break;
+case 32:
+//#line 97 "complejos.y"
+{ maq.code("ge");}
+break;
+case 33:
+//#line 98 "complejos.y"
+{ maq.code("lt");}
+break;
+case 34:
+//#line 99 "complejos.y"
+{ maq.code("le");}
+break;
+case 35:
+//#line 100 "complejos.y"
+{ yyval = val_peek(1); }
+break;
+//#line 724 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

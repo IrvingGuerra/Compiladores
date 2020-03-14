@@ -1,0 +1,9 @@
+numa = 1+0i
+numb = 1+1i
+while(numa < 10+10i){numb = numb*1+1i numa=numa+1+0i print(numb)}
+
+
+
+
+
+for(numb = 1+1i ; (numa < 9+0i) ; numa = numa + 1+0i ){numb = numb *1+1i print(numb)}

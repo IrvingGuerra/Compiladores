@@ -14,4 +14,6 @@ while ( i < 11 ) { i = i + 1 s = s + i print s }
 while ( i < 4 ) { i = i + 1 
  } 
 
-
+numa = 1+0i
+numb = 1+1i
+while(numa < 10+10i){numb = numb*1+1i numa=numa+1+0i print(numb)}
