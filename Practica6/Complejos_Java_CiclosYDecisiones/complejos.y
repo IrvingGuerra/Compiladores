@@ -4,7 +4,7 @@
 
 /* Used tokens */
 %token BLTIN
-%token IF ELSE WHILE PRINT
+%token IF ELSE WHILE FOR PRINT
 %token EQ NEQ GT GE LT LE
 %token DIG
 %token VAR
@@ -46,6 +46,13 @@ stmt: exp { maq.code("pop"); }
                                           maq.getProg().setElementAt($7.obj, (int) $1.obj + 3);
 	                                     } 
       | '{' stmtlist '}' {$$  =  $2; }
+      | for '(' asgn ';' cond ';' asgn ')' stmt end { 
+                                          maq.getProg().setElementAt($3.obj, (int) $1.obj + 1);
+                                          maq.getProg().setElementAt($5.obj, (int) $1.obj + 2);
+                                          maq.getProg().setElementAt($7.obj, (int) $1.obj + 3);
+                                          maq.getProg().setElementAt($9.obj, (int) $1.obj + 4);
+                                          maq.getProg().setElementAt($10.obj, (int) $1.obj + 5);
+                                        }   
       ;
 cond: '(' exp ')' { maq.code("STOP");                    
                     $$ = new ParserVal($2.obj);
@@ -56,6 +63,12 @@ while:	WHILE                { int numI = maq.code("whileCode");
                                $$ = new ParserVal(new Integer(numI));
                              }
       ;
+for: FOR                    { int numI = maq.code("forCode");
+                              maq.code("STOP"); maq.code("STOP"); maq.code("STOP"); maq.code("STOP");
+                              maq.code("STOP");
+                              $$ = new ParserVal(new Integer(numI));
+                            }
+      ;  
 if: IF  { int numI = maq.code("ifCode");
           maq.code("STOP"); maq.code("STOP"); maq.code("STOP");
           $$ = new ParserVal(new Integer(numI));

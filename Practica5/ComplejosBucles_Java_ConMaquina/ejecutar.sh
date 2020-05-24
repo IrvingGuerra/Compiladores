@@ -1,6 +1,7 @@
 #!/bin/bas
 jflex reglas.l
 byaccj -J complejos.y
+javac Complejo.java
 javac Parser.java 
 javac Yylex.java
 javac Symbol.java

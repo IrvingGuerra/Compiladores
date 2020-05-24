@@ -23,6 +23,7 @@ built       = sin | exp | cos
 while       = while
 if          = if
 else        = else
+for         = for
 print       = print
 eq          = ==
 neq			    = #=
@@ -36,6 +37,7 @@ le          = <=
 {while} {return Parser.WHILE;}
 {if} {return Parser.IF;}
 {else} {return Parser.ELSE;}
+{for} {return Parser.FOR;}
 {print} {return Parser.PRINT;}
 {eq} {return Parser.EQ;}
 {neq} {return Parser.NEQ;}

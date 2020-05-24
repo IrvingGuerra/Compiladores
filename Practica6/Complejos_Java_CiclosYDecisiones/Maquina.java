@@ -234,6 +234,24 @@ public class Maquina {
     pc = ((Integer)prog.elementAt(savepc + 2)).intValue();
    }
 
+     /* Code for FOR */
+
+  void forCode(){
+    boolean d;
+    int savepc = pc;
+    execute(((Integer)prog.elementAt(savepc)).intValue()); // Init of var
+    execute(((Integer)prog.elementAt(savepc + 1)).intValue()); /* condition */
+    d = ((Boolean)pila.pop()).booleanValue();
+    while (d) {
+      execute(((Integer)prog.elementAt(savepc + 3)).intValue()); // statement
+      execute(((Integer)prog.elementAt(savepc + 2)).intValue()); // increment
+      execute(((Integer)prog.elementAt(savepc + 1)).intValue()); /* condition */
+      d = ((Boolean)pila.pop()).booleanValue();
+    }
+    pc = ((Integer)prog.elementAt(savepc + 4)).intValue();
+  }
+
+
    /* Conditional operations functions */
   void eq() {
     Complejo c1, c2;

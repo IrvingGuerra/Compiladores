@@ -4,56 +4,56 @@ procedure r_spiral(){
     RETURN;
   }
    else{
-    FORWARD[$1*20];
-    TURN[-90];
+    AVANZA[$1*20];
+    GIRA[-90];
     r_spiral($1-1);
    }
 }
 COLOR[0,0,0];
-TURN[180];
+GIRA[180];
 r_spiral(10);
 
 
 
 //TRIANGULO
 COLOR[0,0,0];
-FORWARD[100];
-TURN[120];
-FORWARD[100];
-TURN[120];
-FORWARD[100];
+AVANZA[100];
+GIRA[120];
+AVANZA[100];
+GIRA[120];
+AVANZA[100];
 
 //ESTRELLA
 procedure estrella() {
     contador = 0;
     while(contador <= 5){       
-        FORWARD[100];
-        TURN[144];        
+        AVANZA[100];
+        GIRA[144];        
         contador = contador + 1;
     }
 }
 COLOR[0,0,0];
-TURN[110];
+GIRA[110];
 estrella();
 
 
 // Estrella de david
 procedure triangulo() {
   COLOR[0,0,0];
-  FORWARD[100];
-  TURN[120];
-  FORWARD[100];
-  TURN[120];
-  FORWARD[100];
-  TURN[120];
+  AVANZA[100];
+  GIRA[120];
+  AVANZA[100];
+  GIRA[120];
+  AVANZA[100];
+  GIRA[120];
 }
 procedure estrella_david() {  
   triangulo();
-  FORWARD[50];
+  AVANZA[50];
   COLOR[201, 206, 214];
-  TURN[-90];
-  FORWARD[20];
-  TURN[150];
+  GIRA[-90];
+  AVANZA[20];
+  GIRA[150];
   triangulo();
 }
 estrella_david();
@@ -63,20 +63,20 @@ estrella_david();
 /(Arbol
 procedure tree(){
   if($1>5){
-    FORWARD[$1];
-    TURN[20];
+    AVANZA[$1];
+    GIRA[20];
     tree($1-15);
-    TURN[320];
+    GIRA[320];
     tree($1-15);
-    TURN[20];
-    FORWARD[(-1)*($1)];
+    GIRA[20];
+    AVANZA[(-1)*($1)];
  }
 }
-TURN[90];
+GIRA[90];
   COLOR[201, 206, 214];
-  TURN[180];
-  FORWARD[200];
-  TURN[180];
+  GIRA[180];
+  AVANZA[200];
+  GIRA[180];
   COLOR[255,255,255];
 tree(100);
 
@@ -85,48 +85,48 @@ procedure figura() {
   corto = $1;
   largo = $1 * 2;
   factor = $2;
-  FORWARD[corto];
-  TURN[90 * factor];
-  FORWARD[corto];
-  TURN[90 * factor];
-  FORWARD[corto];
-  TURN[-90 * factor];
-  FORWARD[largo];
-  TURN[-90 * factor];
-  FORWARD[corto];
-  TURN[-90 * factor];
-  FORWARD[corto];
-  TURN[90 * factor];
-  FORWARD[corto];
-  TURN[90 * factor];
-  FORWARD[corto];
-  TURN[-90 * factor];
-  FORWARD[corto];
-  TURN[-90 * factor];
-  FORWARD[largo];
-  TURN[-90 * factor];
-  FORWARD[corto];
-  TURN[90 * factor];
-  FORWARD[corto];
-  TURN[90 * factor];
-  FORWARD[corto];
+  AVANZA[corto];
+  GIRA[90 * factor];
+  AVANZA[corto];
+  GIRA[90 * factor];
+  AVANZA[corto];
+  GIRA[-90 * factor];
+  AVANZA[largo];
+  GIRA[-90 * factor];
+  AVANZA[corto];
+  GIRA[-90 * factor];
+  AVANZA[corto];
+  GIRA[90 * factor];
+  AVANZA[corto];
+  GIRA[90 * factor];
+  AVANZA[corto];
+  GIRA[-90 * factor];
+  AVANZA[corto];
+  GIRA[-90 * factor];
+  AVANZA[largo];
+  GIRA[-90 * factor];
+  AVANZA[corto];
+  GIRA[90 * factor];
+  AVANZA[corto];
+  GIRA[90 * factor];
+  AVANZA[corto];
 }
 valor = 20;
 factor = 1;
 for(i=0; i < 3; i = i + 1) {
   if(i == 2) {
-    TURN[-90];
+    GIRA[-90];
     factor = -1;
-    FORWARD[valor];
+    AVANZA[valor];
   }
   figura(valor, factor);
-  FORWARD[valor];
+  AVANZA[valor];
 }
-TURN[-90];
+GIRA[-90];
 COLOR[201, 206, 214];
-FORWARD[valor * 8];
+AVANZA[valor * 8];
 COLOR[255, 255, 255];
-TURN[-90];
-FORWARD[valor];
+GIRA[-90];
+AVANZA[valor];
 figura(valor, factor);
-FORWARD[valor];
+AVANZA[valor];

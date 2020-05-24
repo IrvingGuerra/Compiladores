@@ -1,3 +1,5 @@
+package com.compilers.interpreter;
+
 //### This file created by BYACC 1.8(/Java extension  1.15)
 //### Java capabilities added 7 Jan 97, Bob Jamison
 //### Updated : 27 Nov 97  -- Bob Jamison, Joe Nieten
@@ -20,7 +22,7 @@
 	import java.lang.Math;
 	import java.io.*;
 	import java.util.StringTokenizer;
-	import modelo.Configuracion;
+	import com.compilers.configuration.Configuracion;
 //#line 22 "Parser.java"
 
 

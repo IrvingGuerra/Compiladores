@@ -44,7 +44,7 @@ stmt: exp { maq.code("pop"); }
       | if cond stmt end ELSE stmt end {  maq.getProg().setElementAt($3.obj, (int) $1.obj + 1);
                                           maq.getProg().setElementAt($6.obj, (int) $1.obj + 2); 
                                           maq.getProg().setElementAt($7.obj, (int) $1.obj + 3);
-	                                     } 
+	                                     }                      
       | '{' stmtlist '}' {$$  =  $2; }
       ;
 cond: '(' exp ')' { maq.code("STOP");                    
@@ -55,7 +55,7 @@ while:	WHILE                { int numI = maq.code("whileCode");
                                maq.code("STOP"); maq.code("STOP");
                                $$ = new ParserVal(new Integer(numI));
                              }
-      ;
+      ;    
 if: IF  { int numI = maq.code("ifCode");
           maq.code("STOP"); maq.code("STOP"); maq.code("STOP");
           $$ = new ParserVal(new Integer(numI));

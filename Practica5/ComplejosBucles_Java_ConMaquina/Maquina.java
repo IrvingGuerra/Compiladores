@@ -216,7 +216,6 @@ public class Maquina {
     
     pc = ((Integer)prog.elementAt(savepc + 1)).intValue();
    }
-  
   /* Code of if */
   void ifCode(){
     boolean d;    
