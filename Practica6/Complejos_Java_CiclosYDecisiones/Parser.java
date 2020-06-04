@@ -643,14 +643,17 @@ boolean doaction;
 case 3:
 //#line 22 "complejos.y"
 { maq.code("STOP"); return 1; }
+break;
 case 4:
 //#line 23 "complejos.y"
 { maq.code("STOP"); return 1; }
+break;
 case 5:
 //#line 24 "complejos.y"
 { maq.code("printComplex"); maq.code("STOP"); 
                           return 1;
                         }
+break;
 case 6:
 //#line 28 "complejos.y"
 { int numI = maq.code("varPush");

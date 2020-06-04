@@ -1,3 +1,9 @@
+/*
+    File: SymbolData.java
+    Developer: Guerra Vargas Irving Cristobal
+    email: guerravargasirving@gmail.com
+*/
+
 public class SymbolData {
 
     private String nombre;

@@ -1,3 +1,9 @@
+/*
+    File: CurrentState.java
+    Developer: Guerra Vargas Irving Cristobal
+    email: guerravargasirving@gmail.com
+*/
+
 import java.awt.Color;
 import java.util.ArrayList;
 

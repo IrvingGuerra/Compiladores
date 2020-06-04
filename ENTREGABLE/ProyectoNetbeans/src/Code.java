@@ -1,3 +1,8 @@
+/*
+    File: Code.java
+    Developer: Guerra Vargas Irving Cristobal
+    email: guerravargasirving@gmail.com
+*/
 import java.awt.Color;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -5,167 +10,165 @@ import java.util.Stack;
 
 public class Code {
     
-    private int contadorDePrograma;
-    private final ArrayList  memoria;
-    private final Stack pila;
-    private final Symbol tabla;
+    private int programCounter;
+    private final ArrayList  memory;
+    private final Stack stack;
+    private final Symbol table;
     private boolean stop = false;
     private boolean returning = false;
-    private final Stack<Marco> pilaDeMarcos;
+    private final Stack<Marco> stackMacros;
     private final CurrentState currentState;
     
     public Code(Symbol tabla){
         currentState = new CurrentState();
-        contadorDePrograma = 0;
-        memoria = new ArrayList<Method>();
-        pila = new Stack();
-        this.tabla = tabla;
-        pilaDeMarcos = new Stack();
+        programCounter = 0;
+        memory = new ArrayList<Method>();
+        stack = new Stack();
+        this.table = tabla;
+        stackMacros = new Stack();
     }
     
-    public int numeroDeElementos(){
-        return memoria.size() + 1;
+    public int numOfElements(){
+        return memory.size() + 1;
     }
-    
-    //Funciones que se escriben en memoria
-    public int agregarOperacion(String nombre){
-        int posicion = memoria.size();
+
+    public int addOperation(String name){
+        int posicion = memory.size();
         try{
-            memoria.add(this.getClass().getDeclaredMethod(nombre, null));
+            memory.add(this.getClass().getDeclaredMethod(name, null));
             return posicion;
         }
         catch(Exception e ){
-            System.out.println("Error al agregar operación " + nombre + ". ");
+            System.out.println("[ ERROR ] Error al agregar la operación " + name);
         }
         return -1;
     }
     
-    public int agregar(Object objeto){
-        int posicion = memoria.size();
-        memoria.add(objeto);
+    public int add(Object object){
+        int posicion = memory.size();
+        memory.add(object);
         return posicion;
     }
     
-    public void agregar(Object objeto, int posicion){
-        memoria.remove(posicion);
-        memoria.add(posicion, objeto);
+    public void add(Object object, int pos){
+        memory.remove(pos);
+        memory.add(pos, object);
     }
     
-    public int agregarOperacionEn(String nombre, int posicion){
+    public int addOperationIn(String name, int pos){
         try{
-            memoria.add(posicion, this.getClass().getDeclaredMethod(nombre, null));
+            memory.add(pos, this.getClass().getDeclaredMethod(name, null));
         }
         catch(Exception e ){
-            System.out.println("Error al agregar operación " + nombre + ". ");
+            System.out.println("[ ERROR ] Error al agregar la operación " + name);
         }
-        return posicion;
+        return pos;
     }
     
-    //Funciones que la máquina ejecuta sobre la pila
     private void SUM(){
-        Object matriz2 = pila.pop();
-        Object matriz1 = pila.pop();
-		pila.push((double)matriz1 + (double)matriz2);
+        Object matriz2 = stack.pop();
+        Object matriz1 = stack.pop();
+		stack.push((double)matriz1 + (double)matriz2);
     }
     
     private void RES(){
-        Object matriz2 = pila.pop();
-        Object matriz1 = pila.pop();
-		pila.push((double)matriz1 - (double)matriz2);
+        Object matriz2 = stack.pop();
+        Object matriz1 = stack.pop();
+		stack.push((double)matriz1 - (double)matriz2);
     }
 
     private void MUL(){
-        Object matriz2 = pila.pop();
-        Object matriz1 = pila.pop();
-		pila.push((double)matriz1 * (double)matriz2);
+        Object matriz2 = stack.pop();
+        Object matriz1 = stack.pop();
+		stack.push((double)matriz1 * (double)matriz2);
     }
     
     private void negativo(){
-        Object matriz1 = pila.pop();
+        Object matriz1 = stack.pop();
         System.out.println(matriz1);
-        pila.push(-(double)matriz1);
+        stack.push(-(double)matriz1);
     }
     
     private void constPush(){
-        pila.push(memoria.get(++contadorDePrograma));
+        stack.push(memory.get(++programCounter));
     }
     
     private void varPush(){
-        pila.push(memoria.get(++contadorDePrograma));
+        stack.push(memory.get(++programCounter));
     }
     
     private void varPush_Eval(){
-        pila.push(tabla.lookup((String)memoria.get(++contadorDePrograma)));
+        stack.push(table.lookup((String)memory.get(++programCounter)));
     }
 
     private void asignar(){
-        String variable = (String)pila.pop();
-        Object objeto = pila.pop();
-        tabla.insert(variable, objeto);
+        String variable = (String)stack.pop();
+        Object objeto = stack.pop();
+        table.insert(variable, objeto);
     }
     
     private void EQ(){
-        Object A = pila.pop();
-        Object B = pila.pop();
-		pila.push((boolean)((double)A==(double)B));
+        Object A = stack.pop();
+        Object B = stack.pop();
+		stack.push((boolean)((double)A==(double)B));
     }
 
     private void NE(){
-        Object A = pila.pop();
-        Object B = pila.pop();
-		pila.push((double)A!=(double)B);
+        Object A = stack.pop();
+        Object B = stack.pop();
+		stack.push((double)A!=(double)B);
     }
 
     private void LE(){
         double a;
         double b;
-        Object B = pila.pop();
-        Object A = pila.pop(); //Se sacan en orden inverso por la forma de la pila
+        Object B = stack.pop();
+        Object A = stack.pop();
 		a = (double)A;
 		b = (double)B;
-        pila.push(a < b);
+        stack.push(a < b);
     }
 
     private void GR(){
         double a;
         double b;
-        Object B = pila.pop();
-        Object A = pila.pop(); //Se sacan en orden inverso por la forma de la pila
+        Object B = stack.pop();
+        Object A = stack.pop();
 		a = (double)A;
 		b = (double)B;
-        pila.push(a > b);
+        stack.push(a > b);
     }
 
     private void LQ(){
         double a;
         double b;
-        Object B = pila.pop();
-        Object A = pila.pop(); //Se sacan en orden inverso por la forma de la pila
+        Object B = stack.pop();
+        Object A = stack.pop();
 		a = (double)A;
 		b = (double)B;
-        pila.push(a <= b);
+        stack.push(a <= b);
     }
 
     private void GE(){
         double a;
         double b;
-        Object B = pila.pop();
-        Object A = pila.pop(); //Se sacan en orden inverso por la forma de la pila
+        Object B = stack.pop();
+        Object A = stack.pop();
 		a = (double)A;
 		b = (double)B;
-        pila.push(a >= b);
+        stack.push(a >= b);
     }
 
     private void NOT(){
-        pila.push(! (boolean)pila.pop());
+        stack.push(! (boolean)stack.pop());
     }
 
     private void AND(){
-        pila.push((boolean)pila.pop() && (boolean)pila.pop());
+        stack.push((boolean)stack.pop() && (boolean)stack.pop());
     }
 
     private void OR(){
-        pila.push((boolean)pila.pop() || (boolean)pila.pop());
+        stack.push((boolean)stack.pop() || (boolean)stack.pop());
     }
     
     private void stop(){
@@ -180,142 +183,139 @@ public class Code {
     }
     
     private void WHILE(){
-        int condicion = contadorDePrograma;
+        int condicion = programCounter;
         boolean continua = true;
         while(continua && !returning){
             ejecutar(condicion + 3);           
-            if((boolean)pila.pop()){ //lee el resultado de la condición de la pila
-                ejecutar((int)memoria.get(condicion+1));//Ejecuta el cuerpo
+            if((boolean)stack.pop()){ 
+                ejecutar((int)memory.get(condicion+1));
             }
             else{
-                contadorDePrograma = (int)memoria.get(condicion+2); 
+                programCounter = (int)memory.get(condicion+2); 
                 continua = false;
             }
         }     
     }
     
     private void IF_ELSE(){
-        int condicion = contadorDePrograma;
-        ejecutar(condicion + 4); //Evalúa la condicion
+        int condicion = programCounter;
+        ejecutar(condicion + 4); 
         boolean resultado = true;
         try{
-            resultado = (boolean)pila.pop();
+            resultado = (boolean)stack.pop();
         }
         catch(Exception e ){
         }
-        if(resultado){ //lee el resultado de la condición de la pila
-            ejecutar((int)memoria.get(condicion+1));//Ejecuta el cuerpo
+        if(resultado){
+            ejecutar((int)memory.get(condicion+1));
         }
         else{
-            ejecutar((int)memoria.get(condicion+2));
+            ejecutar((int)memory.get(condicion+2));
         }
-        contadorDePrograma = (int)memoria.get(condicion+3) - 1; //El -1 es para corregir el aumento del cp al final de cada instrucción
+        programCounter = (int)memory.get(condicion+3) - 1; 
     }
 
     private void FOR(){
-        int condicion = contadorDePrograma;
-        ejecutar(condicion + 5);  // Ejecutamos la primera parte
+        int condicion = programCounter;
+        ejecutar(condicion + 5);  
         boolean continua = true;
         while(continua && !returning){
-            ejecutar((int)memoria.get(condicion+1)); //evaluamos la condición        
-            if((boolean)pila.pop()){ //lee el resultado de la condición de la pila
-                ejecutar((int)memoria.get(condicion+3));//Ejecuta el cuerpo
-                ejecutar((int)memoria.get(condicion+2));//Ejecuta la última parte del for
+            ejecutar((int)memory.get(condicion+1)); 
+            if((boolean)stack.pop()){ 
+                ejecutar((int)memory.get(condicion+3));
+                ejecutar((int)memory.get(condicion+2));
             }
             else{
-                contadorDePrograma = (int)memoria.get(condicion+4); 
+                programCounter = (int)memory.get(condicion+4); 
                 continua = false;
             }
         } 
     }
     
     private void declaracion(){
-        tabla.insert((String)memoria.get(++contadorDePrograma), ++contadorDePrograma); //Apuntamos a la primera instrucción de la función
+        table.insert((String)memory.get(++programCounter), ++programCounter); 
         int invocados = 0;
-        while(memoria.get(contadorDePrograma) != null || invocados != 0){ //Llevamos cp hasta la siguiente instrucción después de la declaración
-            if( memoria.get(contadorDePrograma) instanceof Method)
-                if(((Method)memoria.get(contadorDePrograma)).getName().equals("invocar"))
+        while(memory.get(programCounter) != null || invocados != 0){ 
+            if( memory.get(programCounter) instanceof Method)
+                if(((Method)memory.get(programCounter)).getName().equals("invocar"))
                     invocados++;
-            if( memoria.get(contadorDePrograma) instanceof Funcion)
+            if( memory.get(programCounter) instanceof Funcion)
                 invocados++;
-            if(memoria.get(contadorDePrograma) == null)
+            if(memory.get(programCounter) == null)
                 invocados--;
-            contadorDePrograma++;
+            programCounter++;
         }
     }
     
     private void invocar(){   
         Marco marco = new Marco();
-        String nombre = (String)memoria.get(++contadorDePrograma);
+        String nombre = (String)memory.get(++programCounter);
         marco.setNombre(nombre);
-        contadorDePrograma++;
-        while(memoria.get(contadorDePrograma) != null){ //Aquí también usamos null como delimitador. Aquí se agregan los parámetros al marco
-            if(memoria.get(contadorDePrograma) instanceof String){
-                if(((String)(memoria.get(contadorDePrograma))).equals("Limite")){
-                    Object parametro = pila.pop();
+        programCounter++;
+        while(memory.get(programCounter) != null){ 
+            if(memory.get(programCounter) instanceof String){
+                if(((String)(memory.get(programCounter))).equals("Limite")){
+                    Object parametro = stack.pop();
                     marco.agregarParametro(parametro);
-                    contadorDePrograma++;
+                    programCounter++;
                 }
             }
             else{ 
-                ejecutarInstruccion(contadorDePrograma);
+                ejecutarInstruccion(programCounter);
             }
 
         }
-        marco.setRetorno(contadorDePrograma);
-        pilaDeMarcos.add(marco);
-        ejecutarFuncion((int)tabla.lookup(nombre));
+        marco.setRetorno(programCounter);
+        stackMacros.add(marco);
+        ejecutarFuncion((int)table.lookup(nombre));
     }
     
     private void push_parametro(){
-        pila.push(pilaDeMarcos.lastElement().getParametro((int)memoria.get(++contadorDePrograma)-1));
+        stack.push(stackMacros.lastElement().getParametro((int)memory.get(++programCounter)-1));
     }
     
-    
-    //Métodos para la ejecución
     public void imprimirMemoria(){
-        for(int i = 0; i < memoria.size(); i++)
-            System.out.println("" + i + ": " +memoria.get(i));
+        for(int i = 0; i < memory.size(); i++)
+            System.out.println("" + i + ": " +memory.get(i));
     }
     
     public void ejecutar(){
         //imprimirMemoria();
         stop = false;
-        while(contadorDePrograma < memoria.size())
-            ejecutarInstruccion(contadorDePrograma);
+        while(programCounter < memory.size())
+            ejecutarInstruccion(programCounter);
     }
     
     public boolean ejecutarSiguiente(){
         //imprimirMemoria();
-        if(contadorDePrograma < memoria.size()){
-            ejecutarInstruccion(contadorDePrograma);
+        if(programCounter < memory.size()){
+            ejecutarInstruccion(programCounter);
             return true;
         }
         return false;
     }
     
-    public void ejecutar(int indice){//ejecuta hasta que se encuentra Stop     
-        contadorDePrograma = indice;
+    public void ejecutar(int indice){  
+        programCounter = indice;
         while(!stop && !returning){
-            ejecutarInstruccion(contadorDePrograma);
+            ejecutarInstruccion(programCounter);
         }
         stop = false;
     }
     
     public void ejecutarFuncion(int indice){
-        contadorDePrograma = indice;
-        while(!returning && memoria.get(contadorDePrograma) != null){
-            ejecutarInstruccion(contadorDePrograma);
+        programCounter = indice;
+        while(!returning && memory.get(programCounter) != null){
+            ejecutarInstruccion(programCounter);
         }
         returning = false;
-        contadorDePrograma = pilaDeMarcos.lastElement().getRetorno();
-        pilaDeMarcos.removeElement(pilaDeMarcos.lastElement());
+        programCounter = stackMacros.lastElement().getRetorno();
+        stackMacros.removeElement(stackMacros.lastElement());
     }
     
     public void ejecutarInstruccion(int indice){
-        //System.out.println("Ejecutando: " + indice);
         try{         
-            Object objetoLeido = memoria.get(indice);
+            Object objetoLeido = memory.get(indice);
             if(objetoLeido instanceof Method){
                 Method metodo = (Method)objetoLeido;
                 metodo.invoke(this, null);
@@ -323,23 +323,23 @@ public class Code {
             if(objetoLeido instanceof Funcion){
                 ArrayList parametros = new ArrayList();
                 Funcion funcion = (Funcion)objetoLeido;
-                contadorDePrograma++;
-                while(memoria.get(contadorDePrograma) != null){ //Aquí también usamos null como delimitador. Aquí se agregan los parámetros al marco
-                    if(memoria.get(contadorDePrograma) instanceof String){
-                        if(((String)(memoria.get(contadorDePrograma))).equals("Limite")){
-                            Object parametro = pila.pop();
+                programCounter++;
+                while(memory.get(programCounter) != null){ 
+                    if(memory.get(programCounter) instanceof String){
+                        if(((String)(memory.get(programCounter))).equals("Limite")){
+                            Object parametro = stack.pop();
                             parametros.add(parametro);
-                            contadorDePrograma++;
+                            programCounter++;
                         }
                     }
                     else{ 
-                        ejecutarInstruccion(contadorDePrograma);
+                        ejecutarInstruccion(programCounter);
                     }
 
                 }
                 funcion.ejecutar(currentState, parametros);
             }
-            contadorDePrograma++;
+            programCounter++;
         }
         catch(Exception e){}
     }

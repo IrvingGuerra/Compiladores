@@ -48,13 +48,13 @@ class Yylex {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\2\2\1\1\2\3\1\4\1\2\7\4"+
-    "\1\2\1\1\1\5\1\6\1\7\6\0\1\10\1\0"+
-    "\7\4\1\11\1\12\1\13\1\14\2\0\1\15\3\4"+
-    "\1\16\2\0\1\17\1\20\2\4\1\21\1\22";
+    "\1\0\1\1\1\2\2\3\1\1\2\4\1\5\1\3"+
+    "\7\5\1\3\1\1\1\6\1\7\1\10\6\0\1\11"+
+    "\1\0\7\5\1\12\1\13\1\14\1\15\2\0\1\16"+
+    "\3\5\1\17\2\0\1\20\1\21\2\5\1\22\1\23";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[55];
+    int [] result = new int[56];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -79,16 +79,16 @@ class Yylex {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\37\0\37\0\76\0\135\0\174\0\233\0\272"+
-    "\0\331\0\370\0\u0117\0\u0136\0\u0155\0\u0174\0\u0193\0\u01b2"+
-    "\0\u01d1\0\u01f0\0\u020f\0\u022e\0\37\0\174\0\233\0\331"+
-    "\0\u024d\0\u026c\0\u028b\0\370\0\u02aa\0\u02c9\0\u02e8\0\u0307"+
-    "\0\u0326\0\u0345\0\u0364\0\u0383\0\37\0\37\0\37\0\37"+
-    "\0\u03a2\0\u03c1\0\370\0\u03e0\0\u03ff\0\u041e\0\370\0\u043d"+
-    "\0\u045c\0\u047b\0\370\0\u049a\0\u04b9\0\370\0\370";
+    "\0\0\0\37\0\37\0\76\0\37\0\135\0\174\0\233"+
+    "\0\272\0\331\0\370\0\u0117\0\u0136\0\u0155\0\u0174\0\u0193"+
+    "\0\u01b2\0\u01d1\0\u01f0\0\u020f\0\u022e\0\37\0\174\0\233"+
+    "\0\331\0\u024d\0\u026c\0\u028b\0\370\0\u02aa\0\u02c9\0\u02e8"+
+    "\0\u0307\0\u0326\0\u0345\0\u0364\0\u0383\0\37\0\37\0\37"+
+    "\0\37\0\u03a2\0\u03c1\0\370\0\u03e0\0\u03ff\0\u041e\0\370"+
+    "\0\u043d\0\u045c\0\u047b\0\370\0\u049a\0\u04b9\0\370\0\370";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[55];
+    int [] result = new int[56];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -111,33 +111,33 @@ class Yylex {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\3\1\5\1\6\1\7\1\2"+
-    "\1\10\1\11\1\2\1\3\1\12\1\13\1\12\1\14"+
-    "\1\12\1\15\1\16\1\12\1\17\2\12\1\20\2\12"+
-    "\1\21\1\22\1\23\1\24\1\25\40\0\1\3\41\0"+
-    "\1\5\1\26\1\27\2\0\1\30\31\0\1\31\2\26"+
-    "\1\32\1\0\3\33\27\0\1\31\3\32\1\0\3\33"+
-    "\33\0\1\12\3\0\13\12\1\34\2\12\11\0\1\35"+
-    "\1\26\1\27\2\0\1\30\35\0\1\12\3\0\16\12"+
-    "\15\0\1\36\3\0\16\12\15\0\1\12\3\0\4\12"+
-    "\1\37\5\12\1\40\3\12\15\0\1\12\3\0\14\12"+
-    "\1\41\1\12\15\0\1\12\3\0\7\12\1\42\6\12"+
-    "\15\0\1\12\3\0\11\12\1\43\4\12\15\0\1\12"+
-    "\3\0\7\12\1\44\6\12\37\0\1\45\36\0\1\46"+
-    "\36\0\1\47\36\0\1\50\10\0\1\31\4\0\3\33"+
-    "\27\0\1\31\2\32\2\0\3\33\27\0\1\33\1\51"+
-    "\1\52\34\0\1\35\1\26\1\27\40\0\1\12\3\0"+
-    "\2\12\1\53\13\12\15\0\1\12\3\0\5\12\1\53"+
-    "\10\12\15\0\1\12\3\0\1\12\1\54\14\12\15\0"+
-    "\1\55\3\0\16\12\15\0\1\12\3\0\1\12\1\53"+
-    "\14\12\15\0\1\56\3\0\16\12\15\0\1\12\3\0"+
-    "\14\12\1\57\1\12\11\0\1\60\2\51\1\61\1\62"+
-    "\32\0\1\60\3\61\1\62\36\0\1\12\3\0\3\12"+
-    "\1\63\12\12\15\0\1\12\3\0\2\12\1\64\13\12"+
-    "\15\0\1\12\3\0\12\12\1\65\3\12\11\0\1\60"+
-    "\3\0\1\62\32\0\1\60\2\61\1\0\1\62\32\0"+
-    "\1\62\42\0\1\12\3\0\15\12\1\66\15\0\1\12"+
-    "\3\0\3\12\1\67\12\12\5\0";
+    "\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\2"+
+    "\1\11\1\12\1\2\1\5\1\13\1\14\1\13\1\15"+
+    "\1\13\1\16\1\17\1\13\1\20\2\13\1\21\2\13"+
+    "\1\22\1\23\1\24\1\25\1\26\40\0\1\5\41\0"+
+    "\1\6\1\27\1\30\2\0\1\31\31\0\1\32\2\27"+
+    "\1\33\1\0\3\34\27\0\1\32\3\33\1\0\3\34"+
+    "\33\0\1\13\3\0\13\13\1\35\2\13\11\0\1\36"+
+    "\1\27\1\30\2\0\1\31\35\0\1\13\3\0\16\13"+
+    "\15\0\1\37\3\0\16\13\15\0\1\13\3\0\4\13"+
+    "\1\40\5\13\1\41\3\13\15\0\1\13\3\0\14\13"+
+    "\1\42\1\13\15\0\1\13\3\0\7\13\1\43\6\13"+
+    "\15\0\1\13\3\0\11\13\1\44\4\13\15\0\1\13"+
+    "\3\0\7\13\1\45\6\13\37\0\1\46\36\0\1\47"+
+    "\36\0\1\50\36\0\1\51\10\0\1\32\4\0\3\34"+
+    "\27\0\1\32\2\33\2\0\3\34\27\0\1\34\1\52"+
+    "\1\53\34\0\1\36\1\27\1\30\40\0\1\13\3\0"+
+    "\2\13\1\54\13\13\15\0\1\13\3\0\5\13\1\54"+
+    "\10\13\15\0\1\13\3\0\1\13\1\55\14\13\15\0"+
+    "\1\56\3\0\16\13\15\0\1\13\3\0\1\13\1\54"+
+    "\14\13\15\0\1\57\3\0\16\13\15\0\1\13\3\0"+
+    "\14\13\1\60\1\13\11\0\1\61\2\52\1\62\1\63"+
+    "\32\0\1\61\3\62\1\63\36\0\1\13\3\0\3\13"+
+    "\1\64\12\13\15\0\1\13\3\0\2\13\1\65\13\13"+
+    "\15\0\1\13\3\0\12\13\1\66\3\13\11\0\1\61"+
+    "\3\0\1\63\32\0\1\61\2\62\1\0\1\63\32\0"+
+    "\1\63\42\0\1\13\3\0\15\13\1\67\15\0\1\13"+
+    "\3\0\3\13\1\70\12\13\5\0";
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[1240];
@@ -178,11 +178,11 @@ class Yylex {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\2\11\21\1\1\11\6\0\1\1\1\0\7\1"+
-    "\4\11\2\0\5\1\2\0\6\1";
+    "\1\0\2\11\1\1\1\11\20\1\1\11\6\0\1\1"+
+    "\1\0\7\1\4\11\2\0\5\1\2\0\6\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[55];
+    int [] result = new int[56];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -597,95 +597,100 @@ class Yylex {
             { 
             } 
             // fall through
-          case 19: break;
-          case 2: 
-            { return (int) yycharat(0);
-            } 
-            // fall through
           case 20: break;
-          case 3: 
-            { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.DIG;
+          case 2: 
+            { ;
             } 
             // fall through
           case 21: break;
-          case 4: 
-            { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.VAR;
+          case 3: 
+            { return (int) yycharat(0);
             } 
             // fall through
           case 22: break;
-          case 5: 
-            { return Parser.GT;
+          case 4: 
+            { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.DIG;
             } 
             // fall through
           case 23: break;
-          case 6: 
-            { return Parser.LT;
+          case 5: 
+            { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.VAR;
             } 
             // fall through
           case 24: break;
-          case 7: 
-            { System.err.println("Error: unexpected character '"+yytext()+"'"); return -1;
+          case 6: 
+            { return Parser.GT;
             } 
             // fall through
           case 25: break;
-          case 8: 
-            { return Parser.IF;
+          case 7: 
+            { return Parser.LT;
             } 
             // fall through
           case 26: break;
-          case 9: 
-            { return Parser.EQ;
+          case 8: 
+            { System.err.println("Error: unexpected character '"+yytext()+"'"); return -1;
             } 
             // fall through
           case 27: break;
-          case 10: 
-            { return Parser.NEQ;
+          case 9: 
+            { return Parser.IF;
             } 
             // fall through
           case 28: break;
-          case 11: 
-            { return Parser.GE;
+          case 10: 
+            { return Parser.EQ;
             } 
             // fall through
           case 29: break;
-          case 12: 
-            { return Parser.LE;
+          case 11: 
+            { return Parser.NEQ;
             } 
             // fall through
           case 30: break;
-          case 13: 
-            { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.BLTIN;
+          case 12: 
+            { return Parser.GE;
             } 
             // fall through
           case 31: break;
-          case 14: 
-            { return Parser.FOR;
+          case 13: 
+            { return Parser.LE;
             } 
             // fall through
           case 32: break;
+          case 14: 
+            { yyparser.yylval = new ParserVal(new Cadena(yytext())); return Parser.BLTIN;
+            } 
+            // fall through
+          case 33: break;
           case 15: 
+            { return Parser.FOR;
+            } 
+            // fall through
+          case 34: break;
+          case 16: 
             { Auxiliar a = new Auxiliar(); 
                int [] cmp = a.obtenerComponentes(yytext());
                yyparser.yylval = new ParserVal( new Complejo(cmp[0], cmp[1]) );
                return Parser.CNUMBER;
             } 
             // fall through
-          case 33: break;
-          case 16: 
+          case 35: break;
+          case 17: 
             { return Parser.ELSE;
             } 
             // fall through
-          case 34: break;
-          case 17: 
+          case 36: break;
+          case 18: 
             { return Parser.PRINT;
             } 
             // fall through
-          case 35: break;
-          case 18: 
+          case 37: break;
+          case 19: 
             { return Parser.WHILE;
             } 
             // fall through
-          case 36: break;
+          case 38: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

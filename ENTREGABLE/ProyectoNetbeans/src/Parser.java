@@ -810,53 +810,53 @@ case 7:
 break;
 case 8:
 //#line 35 "logoyacc.y"
-{		yyval = new ParserVal(machine.agregarOperacion("varPush_Eval")); 
-				machine.agregar(val_peek(0).sval);
+{		yyval = new ParserVal(machine.addOperation("varPush_Eval")); 
+				machine.add(val_peek(0).sval);
 		}
 break;
 case 9:
 //#line 38 "logoyacc.y"
 {
-				yyval = new ParserVal(machine.agregarOperacion("negativo"));
+				yyval = new ParserVal(machine.addOperation("negativo"));
 			}
 break;
 case 10:
 //#line 41 "logoyacc.y"
 {
-				yyval = new ParserVal(machine.agregarOperacion("constPush"));
-				machine.agregar(val_peek(0).dval);
+				yyval = new ParserVal(machine.addOperation("constPush"));
+				machine.add(val_peek(0).dval);
 			}
 break;
 case 11:
 //#line 45 "logoyacc.y"
 {
 				yyval = new ParserVal(val_peek(0).ival);
-				machine.agregarOperacion("varPush");
-                                machine.agregar(val_peek(2).sval);
-                                machine.agregarOperacion("asignar");
-                                machine.agregarOperacion("varPush_Eval"); 
-				machine.agregar(val_peek(2).sval);
+				machine.addOperation("varPush");
+                                machine.add(val_peek(2).sval);
+                                machine.addOperation("asignar");
+                                machine.addOperation("varPush_Eval"); 
+				machine.add(val_peek(2).sval);
 			}
 break;
 case 12:
 //#line 53 "logoyacc.y"
 {
 				yyval = new ParserVal(val_peek(2).ival);
-				machine.agregarOperacion("MUL");
+				machine.addOperation("MUL");
 			}
 break;
 case 13:
 //#line 57 "logoyacc.y"
 {
 				yyval = new ParserVal(val_peek(2).ival);
-				machine.agregarOperacion("SUM");
+				machine.addOperation("SUM");
 			}
 break;
 case 14:
 //#line 61 "logoyacc.y"
 {
 				yyval = new ParserVal(val_peek(2).ival);
-				machine.agregarOperacion("RES");
+				machine.addOperation("RES");
 			}
 break;
 case 15:
@@ -868,189 +868,189 @@ break;
 case 16:
 //#line 68 "logoyacc.y"
 {
-				machine.agregarOperacion("EQ");
+				machine.addOperation("EQ");
 				yyval = val_peek(2);
 			}
 break;
 case 17:
 //#line 72 "logoyacc.y"
 {
-				machine.agregarOperacion("NE");
+				machine.addOperation("NE");
 				yyval = val_peek(2);
 			}
 break;
 case 18:
 //#line 76 "logoyacc.y"
 {
-				machine.agregarOperacion("LE");
+				machine.addOperation("LE");
 				yyval = val_peek(2);
 			}
 break;
 case 19:
 //#line 80 "logoyacc.y"
 {
-				machine.agregarOperacion("LQ");
+				machine.addOperation("LQ");
 				yyval = val_peek(2);
 			}
 break;
 case 20:
 //#line 84 "logoyacc.y"
 {
-				machine.agregarOperacion("GR");
+				machine.addOperation("GR");
 				yyval = val_peek(2);
 			}
 break;
 case 21:
 //#line 88 "logoyacc.y"
 {
-				machine.agregarOperacion("GE");
+				machine.addOperation("GE");
 				yyval = val_peek(2);
 			}
 break;
 case 22:
 //#line 92 "logoyacc.y"
 {
-				machine.agregarOperacion("AND");
+				machine.addOperation("AND");
 				yyval = val_peek(2);
 			}
 break;
 case 23:
 //#line 96 "logoyacc.y"
 {
-				machine.agregarOperacion("OR");
+				machine.addOperation("OR");
 				yyval = val_peek(2);
 			}
 break;
 case 24:
 //#line 100 "logoyacc.y"
 {
-				machine.agregarOperacion("NOT");
+				machine.addOperation("NOT");
 				yyval = val_peek(0);
 			}
 break;
 case 25:
 //#line 104 "logoyacc.y"
-{ yyval = val_peek(0); machine.agregarOperacion("_return"); }
+{ yyval = val_peek(0); machine.addOperation("_return"); }
 break;
 case 26:
 //#line 106 "logoyacc.y"
-{ yyval = new ParserVal(machine.agregarOperacion("push_parametro")); machine.agregar((int)val_peek(0).ival); }
+{ yyval = new ParserVal(machine.addOperation("push_parametro")); machine.add((int)val_peek(0).ival); }
 break;
 case 27:
 //#line 108 "logoyacc.y"
-{ yyval = new ParserVal(machine.agregarOperacionEn("invocar",(val_peek(3).ival))); machine.agregar(null); }
+{ yyval = new ParserVal(machine.addOperationIn("invocar",(val_peek(3).ival))); machine.add(null); }
 break;
 case 29:
 //#line 112 "logoyacc.y"
-{yyval = val_peek(0); machine.agregar("Limite");}
+{yyval = val_peek(0); machine.add("Limite");}
 break;
 case 30:
 //#line 113 "logoyacc.y"
-{yyval = val_peek(2); machine.agregar("Limite");}
+{yyval = val_peek(2); machine.add("Limite");}
 break;
 case 31:
 //#line 116 "logoyacc.y"
-{yyval = new ParserVal(machine.agregarOperacion("nop"));}
+{yyval = new ParserVal(machine.addOperation("nop"));}
 break;
 case 32:
 //#line 119 "logoyacc.y"
 {
 				yyval = val_peek(13);
-				machine.agregar(val_peek(7).ival, val_peek(13).ival + 1);
-				machine.agregar(val_peek(2).ival, val_peek(13).ival + 2);
-				machine.agregar(machine.numeroDeElementos() - 1, val_peek(13).ival + 3);
+				machine.add(val_peek(7).ival, val_peek(13).ival + 1);
+				machine.add(val_peek(2).ival, val_peek(13).ival + 2);
+				machine.add(machine.numOfElements() - 1, val_peek(13).ival + 3);
 		}
 break;
 case 33:
 //#line 125 "logoyacc.y"
 {
 				yyval = val_peek(10);
-				machine.agregar(val_peek(4).ival, val_peek(10).ival + 1);
-				machine.agregar(val_peek(1).ival, val_peek(10).ival + 2);
-				machine.agregar(machine.numeroDeElementos() - 1, val_peek(10).ival + 3);
+				machine.add(val_peek(4).ival, val_peek(10).ival + 1);
+				machine.add(val_peek(1).ival, val_peek(10).ival + 2);
+				machine.add(machine.numOfElements() - 1, val_peek(10).ival + 3);
 			}
 break;
 case 34:
 //#line 131 "logoyacc.y"
 {
 				yyval = val_peek(9);
-				machine.agregar(val_peek(3).ival, val_peek(9).ival + 1);
-				machine.agregar(val_peek(0).ival, val_peek(9).ival + 2);
+				machine.add(val_peek(3).ival, val_peek(9).ival + 1);
+				machine.add(val_peek(0).ival, val_peek(9).ival + 2);
 			}
 break;
 case 35:
 //#line 136 "logoyacc.y"
 {
 				yyval = val_peek(15);
-				machine.agregar(val_peek(10).ival, val_peek(15).ival + 1);
-				machine.agregar(val_peek(7).ival, val_peek(15).ival + 2);
-				machine.agregar(val_peek(3).ival, val_peek(15).ival + 3);
-				machine.agregar(val_peek(0).ival, val_peek(15).ival + 4);
+				machine.add(val_peek(10).ival, val_peek(15).ival + 1);
+				machine.add(val_peek(7).ival, val_peek(15).ival + 2);
+				machine.add(val_peek(3).ival, val_peek(15).ival + 3);
+				machine.add(val_peek(0).ival, val_peek(15).ival + 4);
 		}
 break;
 case 38:
 //#line 145 "logoyacc.y"
 { 
 				yyval = new ParserVal(val_peek(4).ival);
-				machine.agregar(null);
+				machine.add(null);
 		}
 break;
 case 39:
 //#line 150 "logoyacc.y"
 {
-			yyval = new ParserVal(machine.agregar((Funcion)(val_peek(0).obj)));/*Llamada a funcion */
+			yyval = new ParserVal(machine.add((Funcion)(val_peek(0).obj)));/*Llamada a funcion */
 		}
 break;
 case 40:
 //#line 155 "logoyacc.y"
-{ machine.agregarOperacion("declaracion"); }
+{ machine.addOperation("declaracion"); }
 break;
 case 41:
 //#line 157 "logoyacc.y"
-{ machine.agregarOperacion("declaracion"); }
+{ machine.addOperation("declaracion"); }
 break;
 case 42:
 //#line 160 "logoyacc.y"
-{yyval = new ParserVal(machine.agregar(val_peek(0).sval));}
+{yyval = new ParserVal(machine.add(val_peek(0).sval));}
 break;
 case 43:
 //#line 163 "logoyacc.y"
-{machine.agregar(null);}
+{machine.add(null);}
 break;
 case 44:
 //#line 166 "logoyacc.y"
-{yyval = new ParserVal(machine.agregarOperacion("stop"));}
+{yyval = new ParserVal(machine.addOperation("stop"));}
 break;
 case 45:
 //#line 169 "logoyacc.y"
 {
-		yyval = new ParserVal(machine.agregarOperacion("IF_ELSE"));
-	        machine.agregarOperacion("stop");/*then*/
-	        machine.agregarOperacion("stop");/*else*/
-	        machine.agregarOperacion("stop");/*siguiente comando*/
+		yyval = new ParserVal(machine.addOperation("IF_ELSE"));
+	        machine.addOperation("stop");/*then*/
+	        machine.addOperation("stop");/*else*/
+	        machine.addOperation("stop");/*siguiente comando*/
 		}
 break;
 case 46:
 //#line 177 "logoyacc.y"
 {
-			yyval = new ParserVal(machine.agregarOperacion("WHILE"));
-	        machine.agregarOperacion("stop");/*cuerpo*/
-	        machine.agregarOperacion("stop");/*final*/
+			yyval = new ParserVal(machine.addOperation("WHILE"));
+	        machine.addOperation("stop");/*cuerpo*/
+	        machine.addOperation("stop");/*final*/
 		}
 break;
 case 47:
 //#line 184 "logoyacc.y"
 {
-			yyval = new ParserVal(machine.agregarOperacion("FOR"));
-	        machine.agregarOperacion("stop");/*condicion*/
-	        machine.agregarOperacion("stop");/*instrucción final*/
-	        machine.agregarOperacion("stop");/*cuerpo*/
-	        machine.agregarOperacion("stop");/*final*/
+			yyval = new ParserVal(machine.addOperation("FOR"));
+	        machine.addOperation("stop");/*condicion*/
+	        machine.addOperation("stop");/*instrucción final*/
+	        machine.addOperation("stop");/*cuerpo*/
+	        machine.addOperation("stop");/*final*/
 		}
 break;
 case 48:
 //#line 192 "logoyacc.y"
-{ yyval = new ParserVal(machine.agregarOperacion("nop"));}
+{ yyval = new ParserVal(machine.addOperation("nop"));}
 break;
 case 49:
 //#line 193 "logoyacc.y"

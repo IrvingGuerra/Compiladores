@@ -1,6 +1,8 @@
-
-
-
+/*
+    File: Symbol.java
+    Developer: Guerra Vargas Irving Cristobal
+    email: guerravargasirving@gmail.com
+*/
 
 import java.util.ArrayList;
 import java.util.Vector;

@@ -1,6 +1,8 @@
-
-
-
+/*
+    File: Linea.java
+    Developer: Guerra Vargas Irving Cristobal
+    email: guerravargasirving@gmail.com
+*/
 
 import java.awt.Color;
 

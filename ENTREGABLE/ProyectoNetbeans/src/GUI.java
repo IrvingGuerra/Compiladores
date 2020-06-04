@@ -1,5 +1,8 @@
-
-
+/*
+    File: GUI.java
+    Developer: Guerra Vargas Irving Cristobal
+    email: guerravargasirving@gmail.com
+*/
 
 
 import java.awt.Color;
@@ -18,8 +21,7 @@ import javax.swing.ScrollPaneConstants;
 
 public class GUI extends JFrame {
     Parser parser;
-    
-    //Elementos Interfaz
+   
     JTextArea codeArea;
     JScrollPane codeScroll;
     JPanelDibujo drawArea;
@@ -29,31 +31,27 @@ public class GUI extends JFrame {
         
         super("COMPILADORES - Proyecto LOGO");
        
-        
         parser = new Parser();
         parser.symbolInst();
-                
-        //Dibujo
+
         drawArea = new JPanelDibujo();
-        drawArea.setBounds(10,10,600,600);
+        drawArea.setBounds(520,10,650,600);
         drawArea.setBackground(new Color(255,255,255));
         add(drawArea);
         
-        //Codigo
         codeArea = new JTextArea(20,20);
-        codeArea.setBackground(Color.WHITE);
-        codeArea.setFont(new Font("Arial", Font.PLAIN, 14));
-        codeArea.setForeground(Color.BLACK);
+        codeArea.setBackground(Color.BLACK);
+        codeArea.setFont(new Font("Arial", Font.PLAIN, 20));
+        codeArea.setForeground(Color.GREEN);
         codeArea.setLineWrap(true);
         codeArea.setWrapStyleWord(true);
         codeArea.setTabSize(4);
         codeScroll = new JScrollPane (codeArea);
-        codeScroll.setBounds(630,10,400,400);
+        codeScroll.setBounds(10,10,500,400);
         add(codeScroll);
         
-        //Boton TRAZAR
-        trazar = new JButton("Trazar");
-        trazar.setBounds(630,450,400,40);
+        trazar = new JButton("Dibujar");
+        trazar.setBounds(10,420,500,40);
         trazar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -69,10 +67,9 @@ public class GUI extends JFrame {
             }
         });
         add(trazar);
-        
-        //Boton LIMPIAR
+       
         limpiar = new JButton("Limpiar Código");
-        limpiar.setBounds(630,500,400,40);
+        limpiar.setBounds(10,470,500,40);
         limpiar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -81,9 +78,8 @@ public class GUI extends JFrame {
         });
         add(limpiar);
         
-        //Boton LIMPIAR
         limpiarDibujo = new JButton("Limpiar Dibujo");
-        limpiarDibujo.setBounds(630,550,400,40);
+        limpiarDibujo.setBounds(10,520,500,40);
         limpiarDibujo.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -96,7 +92,7 @@ public class GUI extends JFrame {
         add(limpiarDibujo);
         
         this.setLayout(null);
-        this.setBounds(50,50,1050,649);
+        this.setBounds(50,50,1180,649);
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
