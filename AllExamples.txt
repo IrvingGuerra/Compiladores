@@ -381,11 +381,12 @@ for(i=0;i<200;i=i+1){
 
 //PROCEDIMIENTOS
 procedure cuadro(){
-   for(Auxiliar=0;Auxiliar<4;Auxiliar=Auxiliar+1){
+   for(j=0;j<4;j=j+1){
       AVANZA[100];
       GIRA[90];
    }
 }
+COLOR[50,50,50];
 for(i=0; i< 360; i=i+1){
 cuadro();
 GIRA[1];
@@ -460,12 +461,13 @@ procedure squiral() {
         GIRA[-91];
     }
 }
+COLOR[0, 255, 255];
 squiral();
 
 
 //Curva de hilbert
 
-function generaHilbert(){
+procedure generaHilbert(){
 	if($1 > 0){
 		GIRA[-90*$2];
 		generaHilbert($1-1, -1 * $2, $3);
@@ -481,10 +483,10 @@ function generaHilbert(){
 	}
 }
 
-function curvaHilbert(){
+procedure curvaHilbert(){
 	generaHilbert(2+1, 1, 100*0.125);
 }
-
+COLOR[0, 255, 255];
 curvaHilbert();
 
 ///////////
@@ -521,7 +523,7 @@ curvaHilbert();
 //////////// orden 5
 
 
-function generaHilbert(){
+procedure generaHilbert(){
 	if($1 > 0){
 		COLOR[106, 105, 216];
 		GIRA[-90*$2];
@@ -538,7 +540,7 @@ function generaHilbert(){
 	}
 }
 
-function curvaHilbert(){
+procedure curvaHilbert(){
 	generaHilbert(5+1, 1, 200*0.041);
 }
 
@@ -554,7 +556,7 @@ curvaHilbert();
 ///////// orden 3
 
 
-function generaHilbert(){
+procedure generaHilbert(){
 	if($1 > 0){
 		COLOR[106, 105, 216];
 		GIRA[-90*$2];
@@ -571,7 +573,7 @@ function generaHilbert(){
 	}
 }
 
-function curvaHilbert(){
+procedure curvaHilbert(){
 	generaHilbert(2+1, 1, 250*0.125);
 }
 
@@ -586,7 +588,7 @@ curvaHilbert();
 
 ///// orden 2
 
-function generaHilbert(){
+procedure generaHilbert(){
 	if($1 > 0){
 		COLOR[106, 105, 216];
 		GIRA[-90*$2];
@@ -603,7 +605,7 @@ function generaHilbert(){
 	}
 }
 
-function curvaHilbert(){
+procedure curvaHilbert(){
 	generaHilbert(1+1, 1, 250*0.33);
 }
 
@@ -617,7 +619,7 @@ curvaHilbert();
 
 ///orden 0
 
-function generaHilbert(){
+procedure generaHilbert(){
 	if($1 > 0){
 		COLOR[106, 105, 216];
 		GIRA[-90*$2];
@@ -634,7 +636,7 @@ function generaHilbert(){
 	}
 }
 
-function curvaHilbert(){
+procedure curvaHilbert(){
 	generaHilbert(0+1, 1, 250*1);
 }
 
